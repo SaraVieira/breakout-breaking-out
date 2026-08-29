@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bvcj2ysc0hb7n"]
+
+[ext_resource type="Script" uid="uid://dii2dw2f0g1pl" path="res://paddle/paddle.gd" id="1_abfxj"]
+[ext_resource type="Texture2D" uid="uid://0ehthnl6hlum" path="res://assets/paddle.png" id="1_wmxf4"]
+
+[node name="Paddle" type="CharacterBody2D" unique_id=1137321319]
+motion_mode = 1
+wall_min_slide_angle = 3.1415927
+script = ExtResource("1_abfxj")
+
+[node name="Paddle" type="Sprite2D" parent="." unique_id=1585863824]
+position = Vector2(0, 100)
+texture = ExtResource("1_wmxf4")
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="." unique_id=1956360231]
+position = Vector2(0, 100)
+polygon = PackedVector2Array(-28, -7, 28, -7, 28, -5, 30, -5, 30, -3, 32, -3, 32, 3, 30, 3, 30, 5, 28, 5, 28, 7, -28, 7, -28, 5, -30, 5, -30, 3, -32, 3, -32, -3, -30, -3, -30, -5, -28, -5)
