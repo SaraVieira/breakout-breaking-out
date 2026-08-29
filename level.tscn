@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://c74v02w3r1hho"]
 
+[ext_resource type="Texture2D" uid="uid://ugbkll4yy42s" path="res://assets/bg1.png" id="1_0b4ue"]
 [ext_resource type="PackedScene" uid="uid://bvcj2ysc0hb7n" path="res://paddle/paddle.tscn" id="1_u52ul"]
 [ext_resource type="PackedScene" uid="uid://w26oe3yuumdn" path="res://ball/ball.tscn" id="2_vonw3"]
+[ext_resource type="PackedScene" uid="uid://pudmlv4toc1n" path="res://blocks/block.tscn" id="4_f2txt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3dww4"]
 size = Vector2(12, 320)
@@ -16,6 +18,9 @@ size = Vector2(20, 321)
 size = Vector2(599.75, 20)
 
 [node name="Level" type="Node2D" unique_id=236007469]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1122461114]
+texture = ExtResource("1_0b4ue")
 
 [node name="Paddle" parent="." unique_id=1137321319 instance=ExtResource("1_u52ul")]
 position = Vector2(0, 47)
@@ -43,3 +48,39 @@ shape = SubResource("RectangleShape2D_c4qem")
 [node name="bottom" type="CollisionShape2D" parent="Walls" unique_id=1559717168]
 position = Vector2(4, 171)
 shape = SubResource("RectangleShape2D_jo3g4")
+
+[node name="Block" parent="." unique_id=474475886 instance=ExtResource("4_f2txt")]
+position = Vector2(3, -51)
+
+[node name="Block2" parent="." unique_id=91275464 instance=ExtResource("4_f2txt")]
+position = Vector2(-20, -51)
+
+[node name="Block3" parent="." unique_id=1807932046 instance=ExtResource("4_f2txt")]
+position = Vector2(26, -51)
+
+[node name="Block4" parent="." unique_id=1108792579 instance=ExtResource("4_f2txt")]
+position = Vector2(3, -39)
+
+[node name="Block5" parent="." unique_id=880338790 instance=ExtResource("4_f2txt")]
+position = Vector2(-20, -39)
+
+[node name="Block6" parent="." unique_id=1361720597 instance=ExtResource("4_f2txt")]
+position = Vector2(26, -39)
+
+[node name="Block7" parent="." unique_id=1294697934 instance=ExtResource("4_f2txt")]
+position = Vector2(3, -26)
+
+[node name="Block8" parent="." unique_id=1199455511 instance=ExtResource("4_f2txt")]
+position = Vector2(-20, -26)
+
+[node name="Block9" parent="." unique_id=1127999749 instance=ExtResource("4_f2txt")]
+position = Vector2(26, -26)
+
+[node name="Block10" parent="." unique_id=767652446 instance=ExtResource("4_f2txt")]
+position = Vector2(3, -14)
+
+[node name="Block11" parent="." unique_id=1695385981 instance=ExtResource("4_f2txt")]
+position = Vector2(-20, -14)
+
+[node name="Block12" parent="." unique_id=2141928201 instance=ExtResource("4_f2txt")]
+position = Vector2(26, -14)

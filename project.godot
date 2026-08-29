@@ -23,6 +23,11 @@ window/size/initial_position_type=3
 window/stretch/mode="canvas_items"
 window/stretch/scale_mode="integer"
 
+[global_group]
+
+ball=""
+brick=""
+
 [input]
 
 left={
