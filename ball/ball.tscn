@@ -1,17 +1,25 @@
 [gd_scene format=3 uid="uid://w26oe3yuumdn"]
 
-[ext_resource type="Texture2D" uid="uid://cq733bs30rm0k" path="res://assets/ball.png" id="1_6plaf"]
 [ext_resource type="Script" uid="uid://8rlwrbim5pub" path="res://ball/ball.gd" id="1_pwunn"]
+[ext_resource type="FontVariation" uid="uid://cds3850fnxshn" path="res://ui/font-gliph.tres" id="2_pwunn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3dww4"]
 radius = 7.0
 
+[sub_resource type="LabelSettings" id="LabelSettings_3dww4"]
+font = ExtResource("2_pwunn")
+font_size = 20
+
 [node name="Ball" type="CharacterBody2D" unique_id=1006671352 groups=["ball"]]
 script = ExtResource("1_pwunn")
 
-[node name="Ball" type="Sprite2D" parent="." unique_id=433673680]
-scale = Vector2(0.7, 0.7)
-texture = ExtResource("1_6plaf")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1259300335]
 shape = SubResource("CircleShape2D_3dww4")
+
+[node name="Label" type="Label" parent="." unique_id=1611452221]
+offset_left = -9.0
+offset_top = -9.0
+offset_right = 11.0
+offset_bottom = 12.0
+text = "⏺"
+label_settings = SubResource("LabelSettings_3dww4")

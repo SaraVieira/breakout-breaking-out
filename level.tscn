@@ -75,9 +75,9 @@ position = Vector2(4, 169)
 shape = SubResource("RectangleShape2D_jo3g4")
 
 [node name="UI" parent="." unique_id=1529027703 instance=ExtResource("5_f2txt")]
-offset_left = -116.0
+offset_left = -128.0
 offset_top = 0.0
-offset_right = -116.0
+offset_right = -128.0
 offset_bottom = 0.0
 metadata/_edit_use_anchors_ = true
 

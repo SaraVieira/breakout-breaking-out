@@ -18,9 +18,9 @@ font_color = Color(0.6745098, 0.19607843, 0.19607843, 1)
 [node name="UI" type="Control" unique_id=1529027703]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 199.0
+offset_left = 150.0
 offset_top = 172.0
-offset_right = 239.0
+offset_right = 190.0
 offset_bottom = 212.0
 theme = SubResource("Theme_f2txt")
 script = ExtResource("2_vkava")
@@ -40,7 +40,7 @@ text = "Level: 2"
 [node name="points" type="Label" parent="HSplitContainer" unique_id=281228167]
 unique_name_in_owner = true
 layout_mode = 2
-text = "0"
+text = "3254"
 
 [node name="lives" type="Label" parent="HSplitContainer" unique_id=1128291258]
 unique_name_in_owner = true
