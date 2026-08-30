@@ -62,7 +62,11 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	var blocks_in_scene = get_tree().get_nodes_in_group("brick")
+
+	var gold_blocks = blocks_in_scene.filter(func(b): return b.block_type == BlockType.GOLD)
+	if blocks_in_scene.size() - gold_blocks.size() == 0:
+		GameState.win_level()
 
 
 func hit(body: Node2D) -> void:
@@ -76,8 +80,3 @@ func hit(body: Node2D) -> void:
 		else:
 			queue_free()
 			GameState.add_score(blocks[block_type]["points"])
-
-		var blocks_in_scene = get_tree().get_nodes_in_group("brick")
-		var gold_blocks = blocks_in_scene.filter(func(b): return b.block_type == BlockType.GOLD)
-		if gold_blocks.size() == 0:
-			GameState.win_game()

@@ -70,6 +70,6 @@ position = Vector2(-60, -17)
 [node name="Block12" parent="GridContainer" unique_id=2141928201 instance=ExtResource("4_f2txt")]
 position = Vector2(50, -34)
 
-[node name="Block" parent="." unique_id=1551541139 instance=ExtResource("4_f2txt")]
-position = Vector2(-6, -27)
+[node name="Block2" parent="GridContainer" unique_id=1551541139 instance=ExtResource("4_f2txt")]
+position = Vector2(6, -24)
 block_type = 0

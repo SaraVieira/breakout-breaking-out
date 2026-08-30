@@ -9,7 +9,7 @@ func _ready() -> void:
 	velocity = Vector2(SPEED * -1, SPEED)
 
 func _physics_process(delta: float) -> void:
-	if is_active:
+	if is_active and not GameState.paused:
 		var collision = move_and_collide(velocity * delta)
 		if collision:
 			velocity = velocity.bounce(collision.get_normal())

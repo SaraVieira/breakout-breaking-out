@@ -5,6 +5,9 @@ const SPEED = 500.0
 
 
 func _physics_process(delta: float) -> void:
+	if GameState.paused:
+		return
+
 	var direction := Input.get_axis("left", "right")
 	var is_shift_pressed := Input.is_action_pressed("shift")
 	var window_size := get_viewport_rect().size
