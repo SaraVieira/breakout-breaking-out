@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bvcj2ysc0hb7n" path="res://paddle/paddle.tscn" id="1_u52ul"]
 [ext_resource type="PackedScene" uid="uid://w26oe3yuumdn" path="res://ball/ball.tscn" id="2_vonw3"]
 [ext_resource type="PackedScene" uid="uid://pudmlv4toc1n" path="res://blocks/block.tscn" id="4_f2txt"]
-[ext_resource type="Script" uid="uid://bmcwvx7t7ksx8" path="res://ui/ui.gd" id="5_f2txt"]
+[ext_resource type="PackedScene" uid="uid://lnkf4y0w135d" path="res://ui/ui.tscn" id="5_f2txt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3dww4"]
 size = Vector2(12, 320)
@@ -27,12 +27,14 @@ texture = ExtResource("1_0b4ue")
 position = Vector2(0, 47)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=449924610]
+position = Vector2(-1, 0)
 limit_enabled = false
 
 [node name="Ball" parent="." unique_id=1006671352 instance=ExtResource("2_vonw3")]
 position = Vector2(98, 95)
 
 [node name="Walls" type="StaticBody2D" parent="." unique_id=913568787]
+visible = false
 
 [node name="left" type="CollisionShape2D" parent="Walls" unique_id=1974320119]
 position = Vector2(-290, 0)
@@ -52,59 +54,22 @@ shape = SubResource("RectangleShape2D_c4qem")
 position = Vector2(4, 169)
 shape = SubResource("RectangleShape2D_jo3g4")
 
-[node name="Block" parent="." unique_id=474475886 instance=ExtResource("4_f2txt")]
-position = Vector2(3, -51)
+[node name="UI" parent="." unique_id=1529027703 instance=ExtResource("5_f2txt")]
 
-[node name="Block2" parent="." unique_id=91275464 instance=ExtResource("4_f2txt")]
-position = Vector2(-20, -51)
-
-[node name="Block3" parent="." unique_id=1807932046 instance=ExtResource("4_f2txt")]
-position = Vector2(26, -52)
-
-[node name="Block4" parent="." unique_id=1108792579 instance=ExtResource("4_f2txt")]
-position = Vector2(3, -39)
-
-[node name="Block5" parent="." unique_id=880338790 instance=ExtResource("4_f2txt")]
-position = Vector2(-20, -39)
-
-[node name="Block6" parent="." unique_id=1361720597 instance=ExtResource("4_f2txt")]
-position = Vector2(26, -39)
-
-[node name="Block7" parent="." unique_id=1294697934 instance=ExtResource("4_f2txt")]
-position = Vector2(3, -26)
-
-[node name="Block8" parent="." unique_id=1199455511 instance=ExtResource("4_f2txt")]
-position = Vector2(-20, -26)
-
-[node name="Block9" parent="." unique_id=1127999749 instance=ExtResource("4_f2txt")]
-position = Vector2(26, -26)
-
-[node name="Block10" parent="." unique_id=767652446 instance=ExtResource("4_f2txt")]
-position = Vector2(3, -14)
-
-[node name="Block11" parent="." unique_id=1695385981 instance=ExtResource("4_f2txt")]
-position = Vector2(-20, -14)
-
-[node name="Block12" parent="." unique_id=2141928201 instance=ExtResource("4_f2txt")]
-position = Vector2(26, -14)
-
-[node name="UI" type="Control" parent="." unique_id=678571016]
-layout_mode = 3
-anchors_preset = 0
+[node name="GridContainer" type="GridContainer" parent="." unique_id=1716049661]
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("5_f2txt")
+columns = 3
 
-[node name="lives" type="Label" parent="UI" unique_id=304496431]
-layout_mode = 0
-offset_left = 231.0
-offset_top = -149.0
-offset_right = 271.0
-offset_bottom = -126.0
+[node name="Block" parent="GridContainer" unique_id=474475886 instance=ExtResource("4_f2txt")]
+position = Vector2(0, -57)
 
-[node name="points" type="Label" parent="UI" unique_id=33219822]
-layout_mode = 0
-offset_left = 168.0
-offset_top = -155.0
-offset_right = 208.0
-offset_bottom = -132.0
+[node name="Block4" parent="GridContainer" unique_id=1108792579 instance=ExtResource("4_f2txt")]
+position = Vector2(-60, -17)
+
+[node name="Block12" parent="GridContainer" unique_id=2141928201 instance=ExtResource("4_f2txt")]
+position = Vector2(50, -34)
+
+[node name="Block" parent="." unique_id=1551541139 instance=ExtResource("4_f2txt")]
+position = Vector2(-6, -27)
+block_type = 0

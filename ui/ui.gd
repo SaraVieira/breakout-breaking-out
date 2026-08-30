@@ -1,15 +1,22 @@
 extends Control
-@onready var lives: Label = $lives
-@onready var points: Label = $points
+
+const MAX_LIVES: int = 3
+
+@onready var lives: Label = %lives
+@onready var points: Label = %points
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	points.text = str(GameState.score)
-	lives.text = str(GameState.lives)
+	_refresh()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	_refresh()
+
+
+func _refresh() -> void:
 	points.text = str(GameState.score)
-	lives.text = str(GameState.lives)
+	var filled: int = clampi(GameState.lives, 0, MAX_LIVES)
+	lives.text = "♥".repeat(filled) + "♡".repeat(MAX_LIVES - filled)

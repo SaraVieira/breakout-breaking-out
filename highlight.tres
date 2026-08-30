@@ -6,7 +6,7 @@
 shader = ExtResource("1_v3sl7")
 shader_parameter/highlight_color = Color(1, 1, 1, 1)
 shader_parameter/size_effect = 2.0
-shader_parameter/speed = 1.0
+shader_parameter/speed = 0.5
 shader_parameter/highlight_strength = 0.4000000655652798
 shader_parameter/angle_degrees = 45.0
 shader_parameter/pause_duration = 0.5

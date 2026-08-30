@@ -1,42 +1,48 @@
 class_name Block extends StaticBody2D
-@onready var sprite2d: Sprite2D = $sprite
+@onready var label: Label = $Label
 
 var blocks = {
 	0: {
-		"sprite": preload("uid://da2bffkkl0i1v"),
+		"is_metallic": true,
 		"hits": null,
 		"points": 0,
-		"highlight_color": Color(1,1,1)
+		"highlight_color": Color(1,1,1),
+		"color": Color("ffd700ff")
 	},
 	1: {
-		"sprite":  preload("uid://dt7bk8hxcjsd5"),
+		"is_metallic": true,
 		"hits": 2,
 		"highlight_color": Color(1,1,1),
-		"points": 200
+		"points": 200,
+		"color": Color("696a6a")
 	},
 	2: {
-		"sprite": preload("uid://bjxra7n7qtj1c"),
 		"hits": 1,
 		"highlight_color": Color(0.5,0.5,1),
 		"points": 50,
+		"color": Color("5fcde4"),
+		"is_metallic": false,
 	},
 	3: {
-		"sprite": preload("uid://xa2rmf06q2f1"),
 		"hits": 1,
 		"highlight_color": Color(0.5,1,0.5),
 		"points": 50,
+		"color": Color("53c194"),
+		"is_metallic": false,
 	},
 	4: {
-		"sprite": preload("uid://bqhl8dcvek6ca"),
 		"hits": 1,
 		"highlight_color": Color(1,0.5,1),
 		"points": 50,
+		"color": Color("#76428a"),
+		"is_metallic": false,
 	},
 	5: {
-		"sprite": preload("uid://bqhl8dcvek6ca"),
 		"hits": 1,
 		"highlight_color": Color(1,0.5,1),
 		"points": 50,
+		"color": Color("ac3232"),
+		"is_metallic": false,
 	}
 }
 enum BlockType {GOLD, SILVER, BLUE, GREEN, PURPLE, RED}
@@ -46,9 +52,13 @@ var hits = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	var sprite = sprite2d
-	sprite.texture = blocks[block_type]["sprite"]
-	sprite.material["shader_parameter/highlight_color"] = blocks[block_type]["highlight_color"]
+	label.label_settings = label.label_settings.duplicate()
+	label.label_settings.font_color = blocks[block_type]["color"] if blocks[block_type].has("color") else Color(1,1,1)
+
+	if blocks[block_type]["is_metallic"]:
+		label.material["shader_parameter/highlight_color"] = blocks[block_type]["highlight_color"]
+	else:
+		label.text = "▤▤"
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -66,3 +76,8 @@ func hit(body: Node2D) -> void:
 		else:
 			queue_free()
 			GameState.add_score(blocks[block_type]["points"])
+
+		var blocks_in_scene = get_tree().get_nodes_in_group("brick")
+		var gold_blocks = blocks_in_scene.filter(func(b): return b.block_type == BlockType.GOLD)
+		if gold_blocks.size() == 0:
+			GameState.win_game()

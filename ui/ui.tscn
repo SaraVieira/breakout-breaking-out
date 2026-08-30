@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://lnkf4y0w135d"]
+
+[ext_resource type="FontFile" uid="uid://dryy6b0f6nn60" path="res://assets/fonts/dungeon-mode.ttf" id="1_wl5ax"]
+[ext_resource type="Script" uid="uid://bmcwvx7t7ksx8" path="res://ui/ui.gd" id="2_vkava"]
+[ext_resource type="FontVariation" uid="uid://cds3850fnxshn" path="res://ui/font-gliph.tres" id="3_tf0e0"]
+
+[sub_resource type="FontVariation" id="FontVariation_km5ld"]
+base_font = ExtResource("1_wl5ax")
+
+[sub_resource type="Theme" id="Theme_f2txt"]
+default_font = SubResource("FontVariation_km5ld")
+
+[sub_resource type="LabelSettings" id="LabelSettings_n6hdu"]
+font = ExtResource("3_tf0e0")
+font_size = 20
+font_color = Color(0.6745098, 0.19607843, 0.19607843, 1)
+
+[node name="UI" type="Control" unique_id=1529027703]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 8.0
+offset_top = 2.0
+offset_right = 48.0
+offset_bottom = 42.0
+theme = SubResource("Theme_f2txt")
+script = ExtResource("2_vkava")
+
+[node name="HSplitContainer" type="HSplitContainer" parent="." unique_id=1753810574]
+layout_mode = 0
+offset_left = 154.0
+offset_top = -157.0
+offset_right = 237.0
+offset_bottom = -139.0
+
+[node name="points" type="Label" parent="HSplitContainer" unique_id=281228167]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+
+[node name="lives" type="Label" parent="HSplitContainer" unique_id=1128291258]
+unique_name_in_owner = true
+layout_mode = 2
+text = "♥♥♥"
+label_settings = SubResource("LabelSettings_n6hdu")

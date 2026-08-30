@@ -3,16 +3,39 @@
 [ext_resource type="Script" uid="uid://m1lf4bexibas" path="res://blocks/block.gd" id="1_nrr8p"]
 [ext_resource type="Material" uid="uid://crhy0qpfs8mq8" path="res://highlight.tres" id="2_gxuhn"]
 [ext_resource type="Texture2D" uid="uid://da2bffkkl0i1v" path="res://blocks/gold.png" id="3_7tu1r"]
+[ext_resource type="FontVariation" uid="uid://cm1tl0lh1a86i" path="res://ui/gliph-no-space.tres" id="4_gxuhn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j7hor"]
 size = Vector2(16, 8)
+
+[sub_resource type="LabelSettings" id="LabelSettings_3dww4"]
+font = ExtResource("4_gxuhn")
+font_color = Color(0.9896626, 0.9694336, 0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7tu1r"]
+size = Vector2(28, 15)
 
 [node name="Block" type="StaticBody2D" unique_id=1551541139 groups=["brick"]]
 script = ExtResource("1_nrr8p")
 
 [node name="collision" type="CollisionShape2D" parent="." unique_id=815896847]
+visible = false
 shape = SubResource("RectangleShape2D_j7hor")
 
 [node name="sprite" type="Sprite2D" parent="." unique_id=1236371151]
+visible = false
 material = ExtResource("2_gxuhn")
 texture = ExtResource("3_7tu1r")
+
+[node name="Label" type="Label" parent="." unique_id=1454568640]
+material = ExtResource("2_gxuhn")
+offset_left = -13.0
+offset_top = -6.0
+offset_right = 15.0
+offset_bottom = 9.0
+text = "▒▒"
+label_settings = SubResource("LabelSettings_3dww4")
+
+[node name="collision2" type="CollisionShape2D" parent="." unique_id=549620751]
+position = Vector2(1, 1.5)
+shape = SubResource("RectangleShape2D_7tu1r")

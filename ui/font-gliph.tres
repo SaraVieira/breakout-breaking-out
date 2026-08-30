@@ -1,0 +1,6 @@
+[gd_resource type="FontVariation" format=3 uid="uid://cds3850fnxshn"]
+
+[ext_resource type="FontFile" uid="uid://dryy6b0f6nn60" path="res://assets/fonts/dungeon-mode.ttf" id="1_ytgk3"]
+
+[resource]
+base_font = ExtResource("1_ytgk3")

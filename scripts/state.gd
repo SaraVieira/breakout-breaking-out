@@ -18,11 +18,11 @@ func add_score(points: int) -> void:
 	score += points
 
 func lose_life() -> void:
-
 	if lives <= 0:
 		is_game_over = true
 	else:
 		lives -= 1
 
 func win_game() -> void:
+	print("Game won!")
 	is_game_won = true
