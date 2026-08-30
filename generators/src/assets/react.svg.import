@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dt7bk8hxcjsd5"
-path="res://.godot/imported/silver.png-531106ec4703084e981745a7160063fd.ctex"
+uid="uid://csshdhnnr2sbs"
+path="res://.godot/imported/react.svg-0dd71300ff8b63c0a419bfb43bf8e9f4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://blocks/silver.png"
-dest_files=["res://.godot/imported/silver.png-531106ec4703084e981745a7160063fd.ctex"]
+source_file="res://generators/src/assets/react.svg"
+dest_files=["res://.godot/imported/react.svg-0dd71300ff8b63c0a419bfb43bf8e9f4.ctex"]
 
 [params]
 
@@ -38,3 +38,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false

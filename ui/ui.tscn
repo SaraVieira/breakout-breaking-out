@@ -18,10 +18,10 @@ font_color = Color(0.6745098, 0.19607843, 0.19607843, 1)
 [node name="UI" type="Control" unique_id=1529027703]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 8.0
-offset_top = 2.0
-offset_right = 48.0
-offset_bottom = 42.0
+offset_left = 199.0
+offset_top = 172.0
+offset_right = 239.0
+offset_bottom = 212.0
 theme = SubResource("Theme_f2txt")
 script = ExtResource("2_vkava")
 
@@ -31,6 +31,11 @@ offset_left = 154.0
 offset_top = -157.0
 offset_right = 237.0
 offset_bottom = -139.0
+split_offsets = PackedInt32Array(0, 0)
+
+[node name="level" type="Label" parent="HSplitContainer" unique_id=56331095]
+layout_mode = 2
+text = "Level: 2"
 
 [node name="points" type="Label" parent="HSplitContainer" unique_id=281228167]
 unique_name_in_owner = true
@@ -42,3 +47,18 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "♥♥♥"
 label_settings = SubResource("LabelSettings_n6hdu")
+
+[node name="Container" type="Control" parent="." unique_id=948463049]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button" type="Button" parent="Container" unique_id=1660420935]
+layout_mode = 0
+offset_left = -69.0
+offset_top = -49.0
+offset_right = 53.0
+offset_bottom = -26.0
+text = "Continue"
+
+[connection signal="pressed" from="Container/Button" to="." method="_on_button_pressed"]

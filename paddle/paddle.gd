@@ -1,8 +1,22 @@
 extends CharacterBody2D
+@onready var middle: Label = $"full paddle/middle"
 
 
 const SPEED = 500.0
+const NUDGE_SPACING := -12.0
+const REST_LINE_SPACING := -10.0
+const BOUNCE_WAIT := 0.05
+const BOUNCE_TIME := 0.1
 
+var bounce_tween: Tween
+
+func nudge_down() -> void:
+	middle.label_settings.line_spacing = NUDGE_SPACING
+	if bounce_tween and bounce_tween.is_valid():
+		bounce_tween.kill()
+	bounce_tween = create_tween()
+	bounce_tween.tween_interval(BOUNCE_WAIT)
+	bounce_tween.tween_property(middle.label_settings, "line_spacing", REST_LINE_SPACING, BOUNCE_TIME)
 
 func _physics_process(delta: float) -> void:
 	if GameState.paused:

@@ -1,0 +1,330 @@
+.page {
+  min-height: 100svh;
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+/* ---------- header ---------- */
+
+.page-header {
+  margin-bottom: 12px;
+}
+
+.page-title {
+  margin: 0;
+  font-size: 34px;
+  font-weight: normal;
+  letter-spacing: 2px;
+  color: var(--gold);
+}
+
+.page-sub {
+  margin: 2px 0 0;
+  font-size: 18px;
+  color: var(--text-dim);
+}
+
+/* ---------- toolbar ---------- */
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: flex-end;
+  margin-bottom: 10px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.field-label {
+  font-size: 15px;
+  color: var(--text-dim);
+}
+
+.input {
+  width: 90px;
+  font-family: inherit;
+  font-size: 18px;
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border-strong);
+  border-radius: 6px;
+  padding: 5px 8px;
+}
+
+.input:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+/* ---------- buttons ---------- */
+
+.btn {
+  font-family: var(--font);
+  font-size: 18px;
+  letter-spacing: 0.5px;
+  background: var(--surface-raised);
+  color: var(--text);
+  border: 1px solid var(--border-strong);
+  padding: 6px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  border-color: var(--border-hover);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+.btn.primary {
+  background: var(--gold);
+  color: var(--ink);
+  border-color: var(--gold);
+  font-weight: bold;
+}
+
+.btn.gold {
+  background: var(--gold-deep);
+  color: var(--ink);
+  border-color: var(--gold-deep);
+}
+
+.btn.active {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.btn:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+/* ---------- stats row ---------- */
+
+.stats-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+
+.stat {
+  font-size: 19px;
+}
+
+.stat-num {
+  color: var(--green);
+  font-size: 22px;
+}
+
+.stats-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-left: auto;
+}
+
+/* ---------- level grid ---------- */
+
+.grid {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px;
+  cursor: pointer;
+  transition:
+    transform 80ms ease,
+    border-color 80ms ease;
+}
+
+.card:hover {
+  border-color: var(--accent);
+  transform: translateY(-1px);
+}
+
+.card:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+.card.culled {
+  opacity: 0.3;
+  filter: saturate(0.2);
+}
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  font-size: 15px;
+  color: var(--text-dim);
+}
+
+.card-index {
+  color: var(--text);
+}
+
+.card-score {
+  color: var(--accent);
+}
+
+/* The preview doubles as the cull toggle, so it has to be a button of its own. */
+.card-body {
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  font: inherit;
+  line-height: 0;
+}
+
+.card-body:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+.card-actions {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.card-tag {
+  font-size: 13px;
+  letter-spacing: 2px;
+  color: var(--text-dim);
+}
+
+.card-tag.warn {
+  color: var(--warn);
+}
+
+.card-edit {
+  font: inherit;
+  font-size: 15px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--accent);
+  cursor: pointer;
+}
+
+.card-edit:hover {
+  text-decoration: underline;
+}
+
+.card-edit:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+/* Intrinsic size comes from the canvas width/height attributes. */
+.level-canvas {
+  width: 100%;
+  height: auto;
+  image-rendering: pixelated;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    transition: none;
+  }
+}
+
+/* ---------- level editor ---------- */
+
+.editor-backdrop {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  background: rgb(4 6 14 / 0.75);
+}
+
+.editor {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: min(560px, 100%);
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  border-radius: 10px;
+  padding: 16px;
+}
+
+.editor-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.editor-title {
+  font-size: 24px;
+  color: var(--gold);
+  letter-spacing: 1px;
+}
+
+.editor-grid {
+  display: grid;
+  grid-template-columns: repeat(var(--cols), 1fr);
+  gap: 2px;
+}
+
+.cell {
+  aspect-ratio: 2 / 1;
+  display: grid;
+  place-items: center;
+  font: inherit;
+  font-size: 15px;
+  color: var(--ink);
+  border: 1px solid transparent;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.cell.empty {
+  background: var(--bg);
+  border-color: var(--border);
+}
+
+.cell:hover {
+  border-color: var(--gold);
+}
+
+.cell:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 1px;
+}
+
+.editor-note {
+  margin: 0;
+  font-size: 16px;
+  color: var(--text-dim);
+}
+
+.editor-note.warn {
+  color: var(--warn);
+}

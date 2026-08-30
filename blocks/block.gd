@@ -1,82 +1,105 @@
 class_name Block extends StaticBody2D
+
+signal broken
+
+
+enum BlockType { RED, ORANGE, YELLOW, GREEN, BLUE, PURPLE, STEEL, GOLD }
+
+
+const BREAKABLE_GROUP := "breakable"
+
+const SOLID_GLYPH := "▤▤"
+const METALLIC_GLYPH := "▒▒"
+
+const DAMAGED_DARKEN := 0.1
+
+const CLINK_OFFSET := Vector2(0, 1.5)
+const CLINK_TIME := 0.04
+
+
+static var TYPE_STATS := {
+	BlockType.RED: {"color": Color("ac3232"), "hits": 1, "points": 50, "metallic": false},
+	BlockType.ORANGE: {"color": Color("df7126"), "hits": 1, "points": 50, "metallic": false},
+	BlockType.YELLOW: {"color": Color("fbf236"), "hits": 1, "points": 50, "metallic": false},
+	BlockType.GREEN: {"color": Color("53c194"), "hits": 1, "points": 50, "metallic": false},
+	BlockType.BLUE: {"color": Color("5fcde4"), "hits": 1, "points": 50, "metallic": false},
+	BlockType.PURPLE: {"color": Color("76428a"), "hits": 1, "points": 50, "metallic": false},
+	BlockType.STEEL: {"color": Color("696a6a"), "hits": 2, "points": 200, "metallic": true},
+	BlockType.GOLD: {"color": Color("ffd700"), "hits": 0, "points": 0, "metallic": true},
+}
+
+@export var block_type: BlockType = BlockType.BLUE:
+	set = set_block_type
+
+var hits_taken: int = 0
+
 @onready var label: Label = $Label
 
-var blocks = {
-	0: {
-		"is_metallic": true,
-		"hits": null,
-		"points": 0,
-		"highlight_color": Color(1,1,1),
-		"color": Color("ffd700ff")
-	},
-	1: {
-		"is_metallic": true,
-		"hits": 2,
-		"highlight_color": Color(1,1,1),
-		"points": 200,
-		"color": Color("696a6a")
-	},
-	2: {
-		"hits": 1,
-		"highlight_color": Color(0.5,0.5,1),
-		"points": 50,
-		"color": Color("5fcde4"),
-		"is_metallic": false,
-	},
-	3: {
-		"hits": 1,
-		"highlight_color": Color(0.5,1,0.5),
-		"points": 50,
-		"color": Color("53c194"),
-		"is_metallic": false,
-	},
-	4: {
-		"hits": 1,
-		"highlight_color": Color(1,0.5,1),
-		"points": 50,
-		"color": Color("#76428a"),
-		"is_metallic": false,
-	},
-	5: {
-		"hits": 1,
-		"highlight_color": Color(1,0.5,1),
-		"points": 50,
-		"color": Color("ac3232"),
-		"is_metallic": false,
-	}
-}
-enum BlockType {GOLD, SILVER, BLUE, GREEN, PURPLE, RED}
-var hits = 0
+var _label_rest: Vector2
+var _clink_tween: Tween
 
-@export var block_type: BlockType = BlockType.BLUE
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	label.label_settings = label.label_settings.duplicate()
-	label.label_settings.font_color = blocks[block_type]["color"] if blocks[block_type].has("color") else Color(1,1,1)
+	_label_rest = label.position
+	_apply_type()
 
-	if blocks[block_type]["is_metallic"]:
-		label.material["shader_parameter/highlight_color"] = blocks[block_type]["highlight_color"]
-	else:
-		label.text = "▤▤"
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	var blocks_in_scene = get_tree().get_nodes_in_group("brick")
+func set_block_type(value: BlockType) -> void:
+	block_type = value
+	hits_taken = 0
+	_apply_type()
 
-	var gold_blocks = blocks_in_scene.filter(func(b): return b.block_type == BlockType.GOLD)
-	if blocks_in_scene.size() - gold_blocks.size() == 0:
-		GameState.win_level()
+
+func stats() -> Dictionary:
+	return TYPE_STATS[block_type]
+
+
+func is_breakable() -> bool:
+	return stats()["hits"] > 0
 
 
 func hit(body: Node2D) -> void:
-	if body.is_in_group("ball"):
-		if block_type == BlockType.GOLD:
-			return
-		if block_type == BlockType.SILVER:
-			hits += 1
-			if hits >= blocks[1]["hits"]:
-				queue_free()
-		else:
-			queue_free()
-			GameState.add_score(blocks[block_type]["points"])
+	if not body.is_in_group("ball"):
+		return
+
+	if not is_breakable():
+		_clink()
+		return
+
+	hits_taken += 1
+	if hits_taken >= stats()["hits"]:
+		GameState.add_score(stats()["points"])
+		queue_free()
+		broken.emit()
+	else:
+		_apply_type()
+		_clink()
+
+
+func _apply_type() -> void:
+	if label == null:
+		return
+
+	var type_stats := stats()
+	label.text = METALLIC_GLYPH if type_stats["metallic"] else SOLID_GLYPH
+	label.label_settings.font_color = _current_color()
+
+	if is_breakable():
+		add_to_group(BREAKABLE_GROUP)
+	else:
+		remove_from_group(BREAKABLE_GROUP)
+
+
+func _current_color() -> Color:
+	var color: Color = stats()["color"]
+	return color.darkened(DAMAGED_DARKEN) if hits_taken > 0 else color
+
+
+
+func _clink() -> void:
+	if _clink_tween and _clink_tween.is_valid():
+		_clink_tween.kill()
+	_clink_tween = create_tween()
+	_clink_tween.tween_property(label, "position", _label_rest + CLINK_OFFSET, CLINK_TIME)
+	_clink_tween.tween_property(label, "position", _label_rest, CLINK_TIME)

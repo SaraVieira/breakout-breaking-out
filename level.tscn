@@ -1,10 +1,17 @@
 [gd_scene format=3 uid="uid://c74v02w3r1hho"]
 
-[ext_resource type="Texture2D" uid="uid://ugbkll4yy42s" path="res://assets/bg1.png" id="1_0b4ue"]
 [ext_resource type="PackedScene" uid="uid://bvcj2ysc0hb7n" path="res://paddle/paddle.tscn" id="1_u52ul"]
 [ext_resource type="PackedScene" uid="uid://w26oe3yuumdn" path="res://ball/ball.tscn" id="2_vonw3"]
-[ext_resource type="PackedScene" uid="uid://pudmlv4toc1n" path="res://blocks/block.tscn" id="4_f2txt"]
+[ext_resource type="Script" uid="uid://cxu42pdads281" path="res://scripts/level_builder.gd" id="4_f2txt"]
+[ext_resource type="Shader" uid="uid://br2s7ee4sshmw" path="res://ui/crt.gdshader" id="5_1ainy"]
 [ext_resource type="PackedScene" uid="uid://lnkf4y0w135d" path="res://ui/ui.tscn" id="5_f2txt"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3dww4"]
+shader = ExtResource("5_1ainy")
+shader_parameter/wiggle = 0.03
+shader_parameter/wiggle_speed = 25.0
+shader_parameter/smear = 1.0
+shader_parameter/blur_samples = 15
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3dww4"]
 size = Vector2(12, 320)
@@ -19,16 +26,29 @@ size = Vector2(20, 321)
 size = Vector2(599.75, 20)
 
 [node name="Level" type="Node2D" unique_id=236007469]
+position = Vector2(285, 160)
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1122461114]
-texture = ExtResource("1_0b4ue")
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=1525339470]
+offset_left = -359.0
+offset_top = -173.0
+offset_right = 403.0
+offset_bottom = 269.0
+color = Color(0, 0.19468424, 0.19595316, 1)
+
+[node name="CRT" type="CanvasLayer" parent="." unique_id=58004967]
+layer = 100
+
+[node name="ColorRect" type="ColorRect" parent="CRT" unique_id=58004966]
+material = SubResource("ShaderMaterial_3dww4")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [node name="Paddle" parent="." unique_id=1137321319 instance=ExtResource("1_u52ul")]
 position = Vector2(0, 47)
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=449924610]
-position = Vector2(-1, 0)
-limit_enabled = false
 
 [node name="Ball" parent="." unique_id=1006671352 instance=ExtResource("2_vonw3")]
 position = Vector2(98, 95)
@@ -55,21 +75,16 @@ position = Vector2(4, 169)
 shape = SubResource("RectangleShape2D_jo3g4")
 
 [node name="UI" parent="." unique_id=1529027703 instance=ExtResource("5_f2txt")]
+offset_left = -116.0
+offset_top = 0.0
+offset_right = -116.0
+offset_bottom = 0.0
+metadata/_edit_use_anchors_ = true
 
-[node name="GridContainer" type="GridContainer" parent="." unique_id=1716049661]
-offset_right = 40.0
-offset_bottom = 40.0
-columns = 3
+[node name="LevelBuilder" type="Node2D" parent="." unique_id=1716049661]
+position = Vector2(0, 33)
+script = ExtResource("4_f2txt")
 
-[node name="Block" parent="GridContainer" unique_id=474475886 instance=ExtResource("4_f2txt")]
-position = Vector2(0, -57)
-
-[node name="Block4" parent="GridContainer" unique_id=1108792579 instance=ExtResource("4_f2txt")]
-position = Vector2(-60, -17)
-
-[node name="Block12" parent="GridContainer" unique_id=2141928201 instance=ExtResource("4_f2txt")]
-position = Vector2(50, -34)
-
-[node name="Block2" parent="GridContainer" unique_id=1551541139 instance=ExtResource("4_f2txt")]
-position = Vector2(6, -24)
-block_type = 0
+[node name="Camera2D" type="Camera2D" parent="." unique_id=449924610]
+position = Vector2(-1, 0)
+limit_enabled = false
