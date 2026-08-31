@@ -2,7 +2,7 @@ extends Control
 
 const MAX_LIVES: int = 3
 @onready var PowerupPopup: Control = $Container
-@onready var level: Label = $HSplitContainer/level
+@onready var level: Label = $HSplitContainer/HSplitContainer/level
 
 @onready var lives: Label = %lives
 @onready var points: Label = %points

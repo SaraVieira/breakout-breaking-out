@@ -1,0 +1,8 @@
+[gd_resource type="LabelSettings" format=3 uid="uid://8lca5bdt8rky"]
+
+[ext_resource type="FontVariation" uid="uid://cm1tl0lh1a86i" path="res://ui/gliph-no-space.tres" id="1_0xsac"]
+
+[resource]
+paragraph_spacing = -4.0
+font = ExtResource("1_0xsac")
+font_color = Color(0.703146, 0.46643984, 0.8039733, 1)

@@ -1,0 +1,16 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://ber1ppyqwb3d8"]
+
+[ext_resource type="Shader" uid="uid://7y0y8pm1jfqx" path="res://ui/portal.gdshader" id="1_tvq63"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ltaug"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_oiqpm"]
+noise = SubResource("FastNoiseLite_ltaug")
+invert = true
+
+[resource]
+shader = ExtResource("1_tvq63")
+shader_parameter/half_size = Vector2(0.36, 0.39)
+shader_parameter/smooth_size = 0.01
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_oiqpm")
+shader_parameter/portal_speed = Vector2(0.1, 0.1)

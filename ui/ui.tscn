@@ -3,6 +3,7 @@
 [ext_resource type="FontFile" uid="uid://dryy6b0f6nn60" path="res://assets/fonts/dungeon-mode.ttf" id="1_wl5ax"]
 [ext_resource type="Script" uid="uid://bmcwvx7t7ksx8" path="res://ui/ui.gd" id="2_vkava"]
 [ext_resource type="FontVariation" uid="uid://cds3850fnxshn" path="res://ui/font-gliph.tres" id="3_tf0e0"]
+[ext_resource type="PackedScene" uid="uid://cejdvy5wykvgn" path="res://ui/card.tscn" id="4_vkava"]
 
 [sub_resource type="FontVariation" id="FontVariation_km5ld"]
 base_font = ExtResource("1_wl5ax")
@@ -27,22 +28,32 @@ script = ExtResource("2_vkava")
 
 [node name="HSplitContainer" type="HSplitContainer" parent="." unique_id=1753810574]
 layout_mode = 0
-offset_left = 154.0
-offset_top = -157.0
-offset_right = 237.0
-offset_bottom = -139.0
-split_offsets = PackedInt32Array(0, 0)
+offset_left = -149.0
+offset_top = -164.0
+offset_right = 400.0
+offset_bottom = -131.0
+split_offsets = PackedInt32Array(-122)
+split_offset = -122
 
-[node name="level" type="Label" parent="HSplitContainer" unique_id=56331095]
+[node name="HSplitContainer" type="HSplitContainer" parent="HSplitContainer" unique_id=881655038]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="level" type="Label" parent="HSplitContainer/HSplitContainer" unique_id=56331095]
 layout_mode = 2
 text = "Level: 2"
 
-[node name="points" type="Label" parent="HSplitContainer" unique_id=281228167]
+[node name="HSplitContainer2" type="HSplitContainer" parent="HSplitContainer" unique_id=18295079]
+layout_mode = 2
+size_flags_horizontal = 8
+offset_transform_enabled = true
+
+[node name="points" type="Label" parent="HSplitContainer/HSplitContainer2" unique_id=281228167]
 unique_name_in_owner = true
 layout_mode = 2
 text = "3254"
 
-[node name="lives" type="Label" parent="HSplitContainer" unique_id=1128291258]
+[node name="lives" type="Label" parent="HSplitContainer/HSplitContainer2" unique_id=1128291258]
 unique_name_in_owner = true
 layout_mode = 2
 text = "♥♥♥"
@@ -50,15 +61,38 @@ label_settings = SubResource("LabelSettings_n6hdu")
 
 [node name="Container" type="Control" parent="." unique_id=948463049]
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 24.0
+offset_top = 17.0
+offset_right = 64.0
+offset_bottom = 57.0
 
 [node name="Button" type="Button" parent="Container" unique_id=1660420935]
 layout_mode = 0
-offset_left = -69.0
-offset_top = -49.0
-offset_right = 53.0
-offset_bottom = -26.0
+offset_left = 51.0
+offset_top = 39.0
+offset_right = 173.0
+offset_bottom = 62.0
 text = "Continue"
+
+[node name="Card" parent="Container" unique_id=171253740 instance=ExtResource("4_vkava")]
+layout_mode = 0
+offset_left = -32.0
+offset_top = -96.0
+offset_right = -32.0
+offset_bottom = -96.0
+
+[node name="Card2" parent="Container" unique_id=1290280200 instance=ExtResource("4_vkava")]
+layout_mode = 0
+offset_left = 64.0
+offset_top = -96.0
+offset_right = 104.0
+offset_bottom = -96.0
+
+[node name="Card3" parent="Container" unique_id=2072201664 instance=ExtResource("4_vkava")]
+layout_mode = 0
+offset_left = 160.0
+offset_top = -96.0
+offset_right = 200.0
+offset_bottom = -96.0
 
 [connection signal="pressed" from="Container/Button" to="." method="_on_button_pressed"]
