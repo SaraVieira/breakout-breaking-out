@@ -24,8 +24,11 @@ GameState="*uid://dcllue5dooef2"
 window/size/viewport_width=568
 window/size/viewport_height=320
 window/size/initial_position_type=3
+window/size/window_width_override=1136
+window/size/window_height_override=640
 window/stretch/mode="canvas_items"
 window/stretch/scale_mode="integer"
+window/size/mode.template=3
 
 [editor]
 

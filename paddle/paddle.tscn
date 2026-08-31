@@ -4,10 +4,22 @@
 [ext_resource type="FontVariation" uid="uid://cm1tl0lh1a86i" path="res://ui/gliph-no-space.tres" id="3_1k4sr"]
 [ext_resource type="Material" uid="uid://crhy0qpfs8mq8" path="res://blocks/highlight.tres" id="3_c3j7n"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_c3j7n"]
+line_spacing = -10.0
+font = ExtResource("3_1k4sr")
+font_color = Color(0.8375238, 0, 0.26142758, 1)
+outline_color = Color(0.101960786, 0.10980392, 0.17254902, 1)
+
 [sub_resource type="LabelSettings" id="LabelSettings_3dww4"]
 line_spacing = -10.0
 font = ExtResource("3_1k4sr")
 font_color = Color(0.48054415, 0.5545081, 0.595369, 1)
+outline_color = Color(0.101960786, 0.10980392, 0.17254902, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_1k4sr"]
+line_spacing = -10.0
+font = ExtResource("3_1k4sr")
+font_color = Color(0.8392157, 0, 0.2627451, 1)
 outline_color = Color(0.101960786, 0.10980392, 0.17254902, 1)
 
 [node name="Paddle" type="CharacterBody2D" unique_id=1137321319 groups=["paddle"]]
@@ -32,7 +44,7 @@ layout_mode = 2
 text = " 
 ◄
 "
-label_settings = SubResource("LabelSettings_3dww4")
+label_settings = SubResource("LabelSettings_c3j7n")
 
 [node name="middle" type="Label" parent="full paddle" unique_id=513900179]
 material = ExtResource("3_c3j7n")
@@ -47,4 +59,4 @@ layout_mode = 2
 text = "
 ►
 "
-label_settings = SubResource("LabelSettings_3dww4")
+label_settings = SubResource("LabelSettings_1k4sr")

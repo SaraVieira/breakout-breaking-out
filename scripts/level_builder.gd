@@ -19,20 +19,22 @@ var levels: Array[PackedStringArray] = []
 var current_index: int = -1
 
 
+var _order: Array[int] = []
+
+
 func _ready() -> void:
 	levels = LevelData.load_levels()
 	GameState.level_changed.connect(build)
 	build(GameState.level)
 
 
-## `level_number` is 1-based, matching GameState.level. It wraps so a long run
-## loops back to the first level instead of running dry.
+
 func build(level_number: int) -> void:
 	clear()
 	if levels.is_empty():
 		return
 
-	current_index = posmod(level_number - 1, levels.size())
+	current_index = _level_index(level_number)
 	var rows := levels[current_index]
 	var origin := _origin_for(rows[0].length())
 
@@ -43,6 +45,32 @@ func build(level_number: int) -> void:
 			if cell == LevelData.EMPTY_CELL:
 				continue
 			_spawn_brick(LevelData.CHAR_TO_TYPE[cell], origin, column, row)
+
+
+
+func _level_index(level_number: int) -> int:
+	var slot := maxi(level_number - 1, 0)
+	while _order.size() <= slot:
+		_refill_order()
+	return _order[slot]
+
+
+## Appends one shuffled pass over every level. Its first pick is swapped away
+## from the outgoing pass's last pick, so a level never lands twice in a row
+## across the seam between two passes.
+func _refill_order() -> void:
+	var bag: Array[int] = []
+	for index in levels.size():
+		bag.append(index)
+	bag.shuffle()
+
+	var previous := _order[-1] if not _order.is_empty() else -1
+	if bag.size() > 1 and bag[0] == previous:
+		var swap := randi_range(1, bag.size() - 1)
+		bag[0] = bag[swap]
+		bag[swap] = previous
+
+	_order.append_array(bag)
 
 
 ## GRID_ORIGIN, nudged right so a level narrower than GRID_WIDTH stays centred.

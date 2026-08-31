@@ -22,8 +22,6 @@ const CHAR_TO_TYPE := {
 }
 
 
-## Returns every valid level in the file. Invalid levels are dropped, and in
-## debug builds the first problem halts the game rather than being papered over.
 static func load_levels(path: String = LEVELS_PATH) -> Array[PackedStringArray]:
 	var levels: Array[PackedStringArray] = []
 
@@ -46,8 +44,6 @@ static func load_levels(path: String = LEVELS_PATH) -> Array[PackedStringArray]:
 		_fail("%s: contains no playable levels" % path)
 	return levels
 
-
-## Returns the level's rows, or an empty array if it failed validation.
 static func _validate(value: Variant, index: int, path: String) -> PackedStringArray:
 	if typeof(value) != TYPE_ARRAY or (value as Array).is_empty():
 		_fail("%s: level %d is not a non-empty array of rows" % [path, index])
@@ -89,7 +85,6 @@ static func _validate(value: Variant, index: int, path: String) -> PackedStringA
 
 		rows.append(line)
 
-	# A level made only of gold could never be cleared, so it would soft-lock.
 	if breakable == 0:
 		_fail("%s: level %d has no breakable bricks" % [path, index])
 		return PackedStringArray()
