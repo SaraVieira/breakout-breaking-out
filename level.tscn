@@ -5,6 +5,34 @@
 [ext_resource type="Script" uid="uid://cxu42pdads281" path="res://scripts/level_builder.gd" id="4_f2txt"]
 [ext_resource type="Shader" uid="uid://br2s7ee4sshmw" path="res://ui/crt.gdshader" id="5_1ainy"]
 [ext_resource type="PackedScene" uid="uid://lnkf4y0w135d" path="res://ui/ui.tscn" id="5_f2txt"]
+[ext_resource type="Shader" uid="uid://dql06obfquxuf" path="res://ui/bg.gdshader" id="6_bg"]
+[ext_resource type="Script" uid="uid://c0827crx4mcqe" path="res://ui/backdrop.gd" id="7_bg"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_bg"]
+frequency = 0.006
+fractal_octaves = 3
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_bg"]
+noise = SubResource("FastNoiseLite_bg")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bg"]
+shader = ExtResource("6_bg")
+shader_parameter/cell_size = Vector2(28, 15)
+shader_parameter/grid_offset = Vector2(11, 2)
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_bg")
+shader_parameter/scale_a = 0.9
+shader_parameter/scale_b = 1.7
+shader_parameter/drift_a = Vector2(0.012, 0.006)
+shader_parameter/drift_b = Vector2(-0.007, 0.01)
+shader_parameter/ramp_low = 0.3
+shader_parameter/ramp_high = 0.7
+shader_parameter/ramp_0 = Color(0, 0.078431, 0.086275, 1)
+shader_parameter/ramp_1 = Color(0, 0.137255, 0.145098, 1)
+shader_parameter/ramp_2 = Color(0, 0.194684, 0.195953, 1)
+shader_parameter/ramp_3 = Color(0.003922, 0.227451, 0.223529, 1)
+shader_parameter/level_hue = 0.0
+shader_parameter/field_offset = Vector2(0, 0)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3dww4"]
 shader = ExtResource("5_1ainy")
@@ -28,12 +56,14 @@ size = Vector2(599.75, 20)
 [node name="Level" type="Node2D" unique_id=236007469]
 position = Vector2(285, 160)
 
-[node name="ColorRect2" type="ColorRect" parent="." unique_id=1525339470]
+[node name="Backdrop" type="ColorRect" parent="." unique_id=1525339470]
+material = SubResource("ShaderMaterial_bg")
 offset_left = -359.0
 offset_top = -173.0
 offset_right = 403.0
 offset_bottom = 269.0
 color = Color(0, 0.19468424, 0.19595316, 1)
+script = ExtResource("7_bg")
 
 [node name="CRT" type="CanvasLayer" parent="." unique_id=58004967]
 layer = 100

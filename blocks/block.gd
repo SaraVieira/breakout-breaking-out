@@ -18,12 +18,12 @@ const CLINK_TIME := 0.04
 
 
 static var TYPE_STATS := {
-	BlockType.RED: {"color": Color("ac3232"), "hits": 1, "points": 50, "metallic": false},
+	BlockType.RED: {"color": Color("c2444a"), "hits": 1, "points": 50, "metallic": false},
 	BlockType.ORANGE: {"color": Color("df7126"), "hits": 1, "points": 50, "metallic": false},
 	BlockType.YELLOW: {"color": Color("fbf236"), "hits": 1, "points": 50, "metallic": false},
 	BlockType.GREEN: {"color": Color("53c194"), "hits": 1, "points": 50, "metallic": false},
 	BlockType.BLUE: {"color": Color("5fcde4"), "hits": 1, "points": 50, "metallic": false},
-	BlockType.PURPLE: {"color": Color("76428a"), "hits": 1, "points": 50, "metallic": false},
+	BlockType.PURPLE: {"color": Color("a65ea2"), "hits": 1, "points": 50, "metallic": false},
 	BlockType.STEEL: {"color": Color("696a6a"), "hits": 2, "points": 200, "metallic": true},
 	BlockType.GOLD: {"color": Color("ffd700"), "hits": 0, "points": 0, "metallic": true},
 }
