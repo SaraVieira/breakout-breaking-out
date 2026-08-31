@@ -25,6 +25,7 @@ shader_parameter/scale_a = 0.9
 shader_parameter/scale_b = 1.7
 shader_parameter/drift_a = Vector2(0.012, 0.006)
 shader_parameter/drift_b = Vector2(-0.007, 0.01)
+shader_parameter/field_offset = Vector2(0, 0)
 shader_parameter/ramp_low = 0.3
 shader_parameter/ramp_high = 0.7
 shader_parameter/ramp_0 = Color(0, 0.078431, 0.086275, 1)
@@ -32,7 +33,6 @@ shader_parameter/ramp_1 = Color(0, 0.137255, 0.145098, 1)
 shader_parameter/ramp_2 = Color(0, 0.194684, 0.195953, 1)
 shader_parameter/ramp_3 = Color(0.003922, 0.227451, 0.223529, 1)
 shader_parameter/level_hue = 0.0
-shader_parameter/field_offset = Vector2(0, 0)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3dww4"]
 shader = ExtResource("5_1ainy")
@@ -58,10 +58,10 @@ position = Vector2(285, 160)
 
 [node name="Backdrop" type="ColorRect" parent="." unique_id=1525339470]
 material = SubResource("ShaderMaterial_bg")
-offset_left = -359.0
-offset_top = -173.0
-offset_right = 403.0
-offset_bottom = 269.0
+offset_left = -291.0
+offset_top = -165.0
+offset_right = 294.0
+offset_bottom = 167.0
 color = Color(0, 0.19468424, 0.19595316, 1)
 script = ExtResource("7_bg")
 
