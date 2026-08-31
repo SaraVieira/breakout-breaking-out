@@ -28,7 +28,3 @@ func _refresh() -> void:
 	var filled: int = clampi(GameState.lives, 0, MAX_LIVES)
 	lives.text = "♥".repeat(filled) + "♡".repeat(MAX_LIVES - filled)
 	level.text = "Level: " + str(GameState.level)
-
-func _on_button_pressed() -> void:
-	GameState.next_level()
-	GameState.resume_game()

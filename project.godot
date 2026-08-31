@@ -10,10 +10,10 @@ config_version=5
 
 [application]
 
-config/name="breakout-breaking-out"
+config/name="line_break"
 run/main_scene="uid://c74v02w3r1hho"
 config/features=PackedStringArray("4.7", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="uid://dnqjtr0ltcpjh"
 
 [autoload]
 

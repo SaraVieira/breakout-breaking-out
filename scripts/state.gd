@@ -7,8 +7,8 @@ var level: int = 1
 var lives: int = 3
 var is_game_over: bool = false
 var is_level_won: bool = false
-var is_showing_powerup: bool = false
-var paused: bool = false
+var is_showing_powerup: bool = true
+var paused: bool = true
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("pause"):
