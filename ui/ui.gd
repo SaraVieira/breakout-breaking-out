@@ -1,17 +1,16 @@
 extends Control
 
 const MAX_LIVES: int = 3
-@onready var PowerupPopup: Control = $Container
+@onready var PowerupPopup: HSplitContainer = $"CardsContainer"
 @onready var level: Label = $HSplitContainer/HSplitContainer/level
 
 @onready var lives: Label = %lives
 @onready var points: Label = %points
-
+ 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	_refresh()
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

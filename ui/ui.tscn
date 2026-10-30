@@ -59,30 +59,20 @@ layout_mode = 2
 text = "♥♥♥"
 label_settings = SubResource("LabelSettings_n6hdu")
 
-[node name="Container" type="Control" parent="." unique_id=948463049]
-anchors_preset = 0
-offset_left = 24.0
-offset_top = 34.0
-offset_right = 64.0
+[node name="CardsContainer" type="HSplitContainer" parent="." unique_id=661796548]
+layout_mode = 0
+offset_left = -9.0
+offset_top = -56.0
+offset_right = 295.0
 offset_bottom = 74.0
+split_offsets = PackedInt32Array(104, 208)
+split_offset = 104
 
-[node name="Card" parent="Container" unique_id=171253740 instance=ExtResource("4_vkava")]
-layout_mode = 0
-offset_left = -32.0
-offset_top = -96.0
-offset_right = 49.0
-offset_bottom = 18.0
+[node name="Card" parent="CardsContainer" unique_id=220731233 instance=ExtResource("4_vkava")]
+layout_mode = 2
 
-[node name="Card2" parent="Container" unique_id=1290280200 instance=ExtResource("4_vkava")]
-layout_mode = 0
-offset_left = 64.0
-offset_top = -96.0
-offset_right = 104.0
-offset_bottom = -96.0
+[node name="Card2" parent="CardsContainer" unique_id=638230008 instance=ExtResource("4_vkava")]
+layout_mode = 2
 
-[node name="Card3" parent="Container" unique_id=2072201664 instance=ExtResource("4_vkava")]
-layout_mode = 0
-offset_left = 160.0
-offset_top = -96.0
-offset_right = 200.0
-offset_bottom = -96.0
+[node name="Card3" parent="CardsContainer" unique_id=782349337 instance=ExtResource("4_vkava")]
+layout_mode = 2
