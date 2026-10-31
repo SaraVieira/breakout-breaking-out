@@ -1,6 +1,7 @@
 extends Node
 
 signal level_changed(level: int)
+signal powerups_offered(powerups: Array)
 
 var score: int = 0
 var level: int = 1
@@ -9,6 +10,14 @@ var is_game_over: bool = false
 var is_level_won: bool = false
 var is_showing_powerup: bool = false
 var paused: bool = false
+var balls: int = 1
+var current_powerups = []
+var powerups = PowerUp.new()
+var shown_powerups = []
+
+func _ready() -> void:
+	win_level()
+
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("pause"):
@@ -44,6 +53,8 @@ func lose_life() -> void:
 func win_level() -> void:
 	is_level_won = true
 	is_showing_powerup = true
+	shown_powerups = powerups.get_random_powerups(3)
+	powerups_offered.emit(shown_powerups)
 
 func next_level() -> void:
 	level += 1

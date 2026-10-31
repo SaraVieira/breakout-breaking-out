@@ -3,7 +3,6 @@
 [ext_resource type="FontFile" uid="uid://dryy6b0f6nn60" path="res://assets/fonts/dungeon-mode.ttf" id="1_wl5ax"]
 [ext_resource type="Script" uid="uid://bmcwvx7t7ksx8" path="res://ui/ui.gd" id="2_vkava"]
 [ext_resource type="FontVariation" uid="uid://cds3850fnxshn" path="res://ui/font-gliph.tres" id="3_tf0e0"]
-[ext_resource type="PackedScene" uid="uid://cejdvy5wykvgn" path="res://ui/card.tscn" id="4_vkava"]
 
 [sub_resource type="FontVariation" id="FontVariation_km5ld"]
 base_font = ExtResource("1_wl5ax")
@@ -58,21 +57,3 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "♥♥♥"
 label_settings = SubResource("LabelSettings_n6hdu")
-
-[node name="CardsContainer" type="HSplitContainer" parent="." unique_id=661796548]
-layout_mode = 0
-offset_left = -9.0
-offset_top = -56.0
-offset_right = 295.0
-offset_bottom = 74.0
-split_offsets = PackedInt32Array(104, 208)
-split_offset = 104
-
-[node name="Card" parent="CardsContainer" unique_id=220731233 instance=ExtResource("4_vkava")]
-layout_mode = 2
-
-[node name="Card2" parent="CardsContainer" unique_id=638230008 instance=ExtResource("4_vkava")]
-layout_mode = 2
-
-[node name="Card3" parent="CardsContainer" unique_id=782349337 instance=ExtResource("4_vkava")]
-layout_mode = 2

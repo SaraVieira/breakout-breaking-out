@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-const SPEED = 200
+var SPEED = 200
 const REST_OFFSET := Vector2(0, 85)
 
 var dir = Vector2.DOWN
@@ -12,6 +12,7 @@ var launched := false
 
 func _ready() -> void:
 	GameState.level_changed.connect(_on_level_changed)
+
 	hold()
 
 func hold() -> void:
@@ -21,6 +22,8 @@ func hold() -> void:
 
 func launch() -> void:
 	launched = true
+	if GameState.current_powerups.has("speed_up"):
+		SPEED *= 1.5
 	velocity = Vector2(SPEED * -1, -SPEED)
 
 func _on_level_changed(_level: int) -> void:
@@ -53,6 +56,7 @@ func _physics_process(delta: float) -> void:
 
 			if collision.get_collider().is_in_group("bottom-wall"):
 				GameState.lose_life()
+				hold()
 				print("Life lost! Remaining lives: ", GameState.lives)
 
 

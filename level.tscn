@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://lnkf4y0w135d" path="res://ui/ui.tscn" id="5_f2txt"]
 [ext_resource type="Shader" uid="uid://dql06obfquxuf" path="res://ui/bg.gdshader" id="6_bg"]
 [ext_resource type="Script" uid="uid://c0827crx4mcqe" path="res://ui/backdrop.gd" id="7_bg"]
+[ext_resource type="PackedScene" uid="uid://ctapewbdbmq0d" path="res://ui/CardsContainer.tscn" id="7_km5ld"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_bg"]
 frequency = 0.006
@@ -114,6 +115,12 @@ shape = SubResource("RectangleShape2D_jo3g4")
 [node name="LevelBuilder" type="Node2D" parent="." unique_id=1716049661]
 position = Vector2(0, 33)
 script = ExtResource("4_f2txt")
+
+[node name="CardsContainer" parent="." unique_id=1547598435 instance=ExtResource("7_km5ld")]
+offset_left = -144.0
+offset_top = -53.0
+offset_right = 160.0
+offset_bottom = 77.0
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=449924610]
 position = Vector2(-1, 0)

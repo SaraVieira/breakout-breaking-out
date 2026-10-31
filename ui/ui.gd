@@ -1,9 +1,7 @@
 extends Control
 
 const MAX_LIVES: int = 3
-@onready var PowerupPopup: HSplitContainer = $"CardsContainer"
 @onready var level: Label = $HSplitContainer/HSplitContainer/level
-
 @onready var lives: Label = %lives
 @onready var points: Label = %points
  
@@ -15,11 +13,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	_refresh()
-	if GameState.is_showing_powerup:
-		PowerupPopup.show()
-		GameState.pause_game()
-	else:
-		PowerupPopup.hide()
+
 
 
 func _refresh() -> void:
