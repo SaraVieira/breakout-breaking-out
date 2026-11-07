@@ -5,7 +5,7 @@ class_name LevelBuilder extends Node2D
 
 const BRICK_SCENE := preload("res://blocks/block.tscn")
 
-const BRICK_SIZE := Vector2(28.0, 15.0)
+const BRICK_SIZE := Vector2(28.0, 19.0)
 
 ## Column count the generator targets. Narrower levels — hand-made ones, or an
 ## older batch — are centred against this rather than left-aligned.

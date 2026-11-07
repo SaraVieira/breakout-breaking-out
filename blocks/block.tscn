@@ -1,8 +1,20 @@
 [gd_scene format=3 uid="uid://pudmlv4toc1n"]
 
 [ext_resource type="Script" uid="uid://m1lf4bexibas" path="res://blocks/block.gd" id="1_nrr8p"]
-[ext_resource type="Material" uid="uid://crhy0qpfs8mq8" path="res://blocks/highlight.tres" id="2_gxuhn"]
+[ext_resource type="Shader" uid="uid://b1prri7afrnlu" path="res://blocks/pixel-highlight.gdshader" id="2_7tu1r"]
+[ext_resource type="Texture2D" uid="uid://dlutic5geex0p" path="res://assets/block.png" id="4_7tu1r"]
 [ext_resource type="FontVariation" uid="uid://cm1tl0lh1a86i" path="res://ui/gliph-no-space.tres" id="4_gxuhn"]
+[ext_resource type="Material" uid="uid://ejjvf8j1mkqg" path="res://blocks/block-highlight.tres" id="5_bhl"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gax5v"]
+shader = ExtResource("2_7tu1r")
+shader_parameter/highlight_color = Color(1, 1, 1, 1)
+shader_parameter/size_effect = 2.0
+shader_parameter/speed = 0.5
+shader_parameter/highlight_strength = 0.4000000655652798
+shader_parameter/angle_degrees = 45.0
+shader_parameter/pause_duration = 0.5
+shader_parameter/texture_size = Vector2(16, 16)
 
 [sub_resource type="LabelSettings" id="LabelSettings_3dww4"]
 font = ExtResource("4_gxuhn")
@@ -15,7 +27,8 @@ size = Vector2(28, 15)
 script = ExtResource("1_nrr8p")
 
 [node name="Label" type="Label" parent="." unique_id=1454568640]
-material = ExtResource("2_gxuhn")
+visible = false
+material = SubResource("ShaderMaterial_gax5v")
 offset_left = -13.0
 offset_top = -6.0
 offset_right = 15.0
@@ -24,5 +37,10 @@ text = "▒▒"
 label_settings = SubResource("LabelSettings_3dww4")
 
 [node name="collision2" type="CollisionShape2D" parent="." unique_id=549620751]
-position = Vector2(1, 1.5)
+position = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_7tu1r")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=433126517]
+material = ExtResource("5_bhl")
+position = Vector2(1, 1)
+texture = ExtResource("4_7tu1r")

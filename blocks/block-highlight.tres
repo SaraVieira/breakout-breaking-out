@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://ejjvf8j1mkqg"]
+
+[ext_resource type="Shader" uid="uid://b1prri7afrnlu" path="res://blocks/pixel-highlight.gdshader" id="1_v3sl7"]
+
+[resource]
+shader = ExtResource("1_v3sl7")
+shader_parameter/highlight_color = Color(0.9348796, 0.91700476, 0.53589594, 1)
+shader_parameter/size_effect = 6.0
+shader_parameter/speed = 0.6
+shader_parameter/highlight_strength = 0.4000000655652798
+shader_parameter/angle_degrees = 145.0
+shader_parameter/pause_duration = 0.5
+shader_parameter/texture_size = Vector2(25, 15)

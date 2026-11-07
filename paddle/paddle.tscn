@@ -1,8 +1,18 @@
 [gd_scene format=3 uid="uid://bvcj2ysc0hb7n"]
 
 [ext_resource type="Script" uid="uid://dii2dw2f0g1pl" path="res://paddle/paddle.gd" id="1_abfxj"]
+[ext_resource type="Shader" uid="uid://b1prri7afrnlu" path="res://blocks/pixel-highlight.gdshader" id="2_1k4sr"]
 [ext_resource type="FontVariation" uid="uid://cm1tl0lh1a86i" path="res://ui/gliph-no-space.tres" id="3_1k4sr"]
-[ext_resource type="Material" uid="uid://crhy0qpfs8mq8" path="res://blocks/highlight.tres" id="3_c3j7n"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gax5v"]
+shader = ExtResource("2_1k4sr")
+shader_parameter/highlight_color = Color(1, 1, 1, 1)
+shader_parameter/size_effect = 2.0
+shader_parameter/speed = 0.5
+shader_parameter/highlight_strength = 0.4000000655652798
+shader_parameter/angle_degrees = 45.0
+shader_parameter/pause_duration = 0.5
+shader_parameter/texture_size = Vector2(16, 16)
 
 [sub_resource type="LabelSettings" id="LabelSettings_c3j7n"]
 line_spacing = -10.0
@@ -28,6 +38,7 @@ wall_min_slide_angle = 3.1415927
 script = ExtResource("1_abfxj")
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="." unique_id=1956360231]
+visible = false
 position = Vector2(0, 100)
 polygon = PackedVector2Array(30, -5, 33, -5, 33, -4, 35, -4, 35, -2, 37, -2, 37, 2, 35, 2, 35, 3, 33, 3, 33, 5, 30, 5, 27, 7, -27, 7, -30, 5, -33, 5, -33, 3, -35, 3, -35, 2, -37, 1, -37, -2, -35, -2, -35, -4, -33, -3, -33, -5, -30, -5, -27, -7)
 
@@ -39,7 +50,7 @@ offset_bottom = 120.0
 theme_override_constants/separation = -1
 
 [node name="start" type="Label" parent="full paddle" unique_id=316434482]
-material = ExtResource("3_c3j7n")
+material = SubResource("ShaderMaterial_gax5v")
 layout_mode = 2
 text = " 
 ◄
@@ -47,7 +58,7 @@ text = "
 label_settings = SubResource("LabelSettings_c3j7n")
 
 [node name="middle" type="Label" parent="full paddle" unique_id=513900179]
-material = ExtResource("3_c3j7n")
+material = SubResource("ShaderMaterial_gax5v")
 layout_mode = 2
 text = "────
 ▄▄▄▄

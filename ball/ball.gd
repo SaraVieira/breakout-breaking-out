@@ -52,7 +52,10 @@ func _physics_process(delta: float) -> void:
 				collision.get_collider().hit(self)
 
 			if collision.get_collider().is_in_group("paddle"):
-				collision.get_collider().nudge_down()
+				if GameState.current_powerups.has("magnet"):
+					hold()
+				else:
+					collision.get_collider().nudge_down()
 
 			if collision.get_collider().is_in_group("bottom-wall"):
 				GameState.lose_life()

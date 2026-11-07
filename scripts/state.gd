@@ -11,7 +11,7 @@ var is_level_won: bool = false
 var is_showing_powerup: bool = false
 var paused: bool = false
 var balls: int = 1
-var current_powerups = []
+var current_powerups = ["magnet"]
 var powerups = PowerUp.new()
 var shown_powerups = []
 
@@ -42,6 +42,8 @@ func reset() -> void:
 	level_changed.emit(level)
 
 func add_score(points: int) -> void:
+	if current_powerups.has("score_multiplier"):
+		points *= 2
 	score += points
 
 func lose_life() -> void:

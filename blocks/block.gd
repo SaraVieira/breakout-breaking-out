@@ -8,8 +8,8 @@ enum BlockType { RED, ORANGE, YELLOW, GREEN, BLUE, PURPLE, STEEL, GOLD }
 
 const BREAKABLE_GROUP := "breakable"
 
-const SOLID_GLYPH := "▤▤"
-const METALLIC_GLYPH := "▒▒"
+const SOLID_TEXTURE := preload("res://assets/block.png")
+const METALLIC_TEXTURE := preload("res://assets/block-metal.png")
 
 const DAMAGED_DARKEN := 0.1
 
@@ -33,15 +33,14 @@ static var TYPE_STATS := {
 
 var hits_taken: int = 0
 
-@onready var label: Label = $Label
+@onready var sprite: Sprite2D = $Sprite
 
-var _label_rest: Vector2
+var _sprite_rest: Vector2
 var _clink_tween: Tween
 
 
 func _ready() -> void:
-	label.label_settings = label.label_settings.duplicate()
-	_label_rest = label.position
+	_sprite_rest = sprite.position
 	_apply_type()
 
 
@@ -78,12 +77,11 @@ func hit(body: Node2D) -> void:
 
 
 func _apply_type() -> void:
-	if label == null:
+	if sprite == null:
 		return
 
-	var type_stats := stats()
-	label.text = METALLIC_GLYPH if type_stats["metallic"] else SOLID_GLYPH
-	label.label_settings.font_color = _current_color()
+	sprite.texture = METALLIC_TEXTURE if stats()["metallic"] else SOLID_TEXTURE
+	sprite.self_modulate = _current_color()
 
 	if is_breakable():
 		add_to_group(BREAKABLE_GROUP)
@@ -101,5 +99,5 @@ func _clink() -> void:
 	if _clink_tween and _clink_tween.is_valid():
 		_clink_tween.kill()
 	_clink_tween = create_tween()
-	_clink_tween.tween_property(label, "position", _label_rest + CLINK_OFFSET, CLINK_TIME)
-	_clink_tween.tween_property(label, "position", _label_rest, CLINK_TIME)
+	_clink_tween.tween_property(sprite, "position", _sprite_rest + CLINK_OFFSET, CLINK_TIME)
+	_clink_tween.tween_property(sprite, "position", _sprite_rest, CLINK_TIME)
