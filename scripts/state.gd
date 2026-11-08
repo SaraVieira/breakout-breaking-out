@@ -10,24 +10,23 @@ var is_game_over: bool = false
 var is_level_won: bool = false
 var is_showing_powerup: bool = false
 var paused: bool = false
-var balls: int = 1
+var balls: int:
+	get:
+		return 3 if has_powerup(&"balls3") else 1
 const POWERUPS: Registry = preload("res://powerups/power_ups.tres")
 
-const BALL_BASE_SPEED := 200.0
-const BALL_MIN_SPEED := 120.0
-const BALL_MAX_SPEED := 270.0
+const BALL_BASE_SPEED := 250.0
+const BALL_MIN_SPEED := 160.0
+const BALL_MAX_SPEED := 350.0
 
 var ball_speed := BALL_BASE_SPEED
 
 var current_powerups: Array[StringName] = []
 var shown_powerups: Array[PowerUpData] = []
 
-func _ready() -> void:
-	win_level()
-
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("pause"):
+	if Input.is_action_just_pressed("pause") and not is_showing_powerup:
 		if paused:
 			resume_game()
 		else:
@@ -46,7 +45,10 @@ func reset() -> void:
 	is_game_over = false
 	is_level_won = false
 	is_showing_powerup = false
-	ball_speed = BALL_BASE_SPEED
+	paused = false
+	current_powerups.clear()
+	shown_powerups.clear()
+	_update_ball_speed()
 	level_changed.emit(level)
 
 func has_powerup(id: StringName) -> bool:
@@ -66,13 +68,12 @@ func add_score(points: int) -> void:
 	score += points
 
 func lose_life() -> void:
-	if lives <= 0:
+	if has_powerup(&"shield"):
+		current_powerups.erase(&"shield")
+		return
+	lives = maxi(lives - 1, 0)
+	if lives == 0:
 		is_game_over = true
-	else:
-		if has_powerup(&"shield"):
-			current_powerups.erase(&"shield")
-			return
-		lives -= 1
 
 func win_level() -> void:
 	is_level_won = true
@@ -81,6 +82,8 @@ func win_level() -> void:
 
 func can_offer(id: StringName) -> bool:
 	match id:
+		&"balls3":
+			return balls < 3
 		&"speed_up":
 			return ball_speed < BALL_MAX_SPEED
 		&"speed_down":
@@ -101,4 +104,11 @@ func next_level() -> void:
 	level += 1
 	is_level_won = false
 	is_showing_powerup = false
+	_update_ball_speed()
 	level_changed.emit(level)
+
+func _update_ball_speed() -> void:
+	var ups := count_powerup(&"speed_up")
+	var downs := count_powerup(&"speed_down")
+	var speed := BALL_BASE_SPEED * (1.1 ** ups) * (0.9 ** downs)
+	ball_speed = clampf(speed, BALL_MIN_SPEED, BALL_MAX_SPEED)

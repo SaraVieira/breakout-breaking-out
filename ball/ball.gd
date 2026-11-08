@@ -1,17 +1,23 @@
-extends CharacterBody2D
+class_name Ball extends CharacterBody2D
 
+signal served(from: Vector2, with_velocity: Vector2)
+signal fell(ball: Ball)
 
 const REST_OFFSET := Vector2(0, 85)
+const MIN_VERTICAL_RATIO := 0.35
 
 var dir = Vector2.DOWN
 var is_active = true
 var launched := false
+var is_extra := false
+var _serving := true
 
 @onready var paddle: Node2D = get_tree().get_first_node_in_group("paddle")
 
 func _ready() -> void:
+	if is_extra:
+		return
 	GameState.level_changed.connect(_on_level_changed)
-
 	hold()
 
 func hold() -> void:
@@ -21,14 +27,25 @@ func hold() -> void:
 
 func launch() -> void:
 	launched = true
-	velocity = Vector2(- GameState.ball_speed, - GameState.ball_speed)
+	velocity = Vector2(-1, -1).normalized() * GameState.ball_speed
+	if _serving:
+		_serving = false
+		served.emit(global_position, velocity)
+
+func serve() -> void:
+	is_active = true
+	_serving = true
+	show()
+	hold()
+
+func park() -> void:
+	is_active = false
+	launched = true
+	velocity = Vector2.ZERO
+	hide()
 
 func _on_level_changed(_level: int) -> void:
-	var ups := GameState.count_powerup(&"speed_up")
-	var downs := GameState.count_powerup(&"speed_down")
-	var speed := GameState.BALL_BASE_SPEED * (1.1 ** ups) * (0.9 ** downs)
-	GameState.ball_speed = clampf(speed, GameState.BALL_MIN_SPEED, GameState.BALL_MAX_SPEED)
-	hold()
+	serve()
 
 func _follow_paddle() -> void:
 	if paddle:
@@ -53,16 +70,23 @@ func _physics_process(delta: float) -> void:
 				collision.get_collider().hit(self)
 
 			if collision.get_collider().is_in_group("paddle"):
-				if GameState.has_powerup(&"magnet"):
+				if GameState.has_powerup(&"magnet") and not is_extra:
 					hold()
 				else:
 					collision.get_collider().nudge_down()
 
 			if collision.get_collider().is_in_group("bottom-wall"):
-				GameState.lose_life()
-				hold()
-				print("Life lost! Remaining lives: ", GameState.lives)
+				fell.emit(self)
+				return
+
+		_keep_vertical()
 
 
-		if(velocity.y > 0 and velocity.y < 100):
-			velocity.y = -200
+func _keep_vertical() -> void:
+	var speed := velocity.length()
+	var min_y := speed * MIN_VERTICAL_RATIO
+	if absf(velocity.y) >= min_y:
+		return
+	var vertical_sign := 1.0 if velocity.y > 0.0 else -1.0
+	velocity.y = min_y * vertical_sign
+	velocity.x = signf(velocity.x) * sqrt(speed * speed - min_y * min_y)

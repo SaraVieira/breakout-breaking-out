@@ -33,6 +33,7 @@ font_color = Color(0.8392157, 0, 0.2627451, 1)
 outline_color = Color(0.101960786, 0.10980392, 0.17254902, 1)
 
 [node name="Paddle" type="CharacterBody2D" unique_id=1137321319 groups=["paddle"]]
+collision_mask = 3
 motion_mode = 1
 wall_min_slide_angle = 3.1415927
 script = ExtResource("1_abfxj")
