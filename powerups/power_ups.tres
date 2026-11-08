@@ -21,7 +21,6 @@ _uids_to_string_ids = Dictionary[StringName, StringName]({
 &"uid://bi5dhctofc3pi": &"speed_up",
 &"uid://bjwft22mjk3um": &"shield",
 &"uid://buv20pup74oyn": &"power_up_data",
-&"uid://cgbd383cw5wrq": &"sticky_paddle",
 &"uid://chga3tw675bku": &"magnet",
 &"uid://crdahbnohrk3": &"score_multiplier",
 &"uid://djd5dt5yqjmh4": &"laser",
@@ -38,6 +37,5 @@ _string_ids_to_uids = Dictionary[StringName, StringName]({
 &"shield": &"uid://bjwft22mjk3um",
 &"speed_down": &"uid://ba76w86bym8gd",
 &"speed_up": &"uid://bi5dhctofc3pi",
-&"sticky_paddle": &"uid://cgbd383cw5wrq",
 &"through_ball": &"uid://67n8fmdf8xsq"
 })

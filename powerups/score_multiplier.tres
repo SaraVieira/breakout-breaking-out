@@ -7,6 +7,7 @@
 script = ExtResource("2_8qmg1")
 id = &"score_multiplier"
 name = "Score Multiplier"
+implemented = true
 description = "Doubles the score earned for a short duration."
 image = ExtResource("1_iy7kw")
 color = Color(0.768, 0.428, 0.31, 1)
