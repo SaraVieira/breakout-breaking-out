@@ -7,6 +7,7 @@
 script = ExtResource("2_kbbgr")
 id = &"balls3"
 name = "3 Balls"
+implemented = true
 description = "Adds 2 extra balls to the game."
 image = ExtResource("1_q7fse")
 color = Color(0.145, 0.476, 0.476, 1)

@@ -128,8 +128,8 @@ offset_bottom = 77.0
 position = Vector2(-1, 0)
 limit_enabled = false
 
-[node name="DebugMenu" parent="." instance=ExtResource("9_dbg")]
+[node name="DebugMenu" parent="." unique_id=146799729 instance=ExtResource("9_dbg")]
 
-[node name="BallSpawner" type="Node2D" parent="." node_paths=PackedStringArray("main_ball")]
+[node name="BallSpawner" type="Node2D" parent="." unique_id=1261322419 node_paths=PackedStringArray("main_ball")]
 script = ExtResource("10_spawn")
 main_ball = NodePath("../Ball")

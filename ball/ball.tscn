@@ -12,7 +12,6 @@ font_size = 20
 
 [node name="Ball" type="CharacterBody2D" unique_id=1006671352 groups=["ball"]]
 collision_layer = 2
-collision_mask = 1
 script = ExtResource("1_pwunn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1259300335]

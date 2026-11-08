@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://biqrnjta5mu6s"]
 
-[ext_resource type="Script" uid="uid://b3o8rcpoyrw57" path="res://ui/debug_menu.gd" id="1_dbg"]
 [ext_resource type="FontFile" uid="uid://dryy6b0f6nn60" path="res://assets/fonts/dungeon-mode.ttf" id="1_bbiiw"]
+[ext_resource type="Script" uid="uid://b3o8rcpoyrw57" path="res://ui/debug_menu.gd" id="1_dbg"]
 
 [node name="DebugMenu" type="CanvasLayer" unique_id=2006190465]
 layer = 100

@@ -6,7 +6,7 @@
 script = ExtResource("1_35hcm")
 _version = 2
 _scan_rulesets = Array[Dictionary]([{
-&"allowed_file_extensions": Array[String]([]),
+&"allowed_file_extensions": Array[String](["tres"]),
 &"class_restrictions": Array[StringName]([&"PowerUpData"]),
 &"recursive_scan": true,
 &"scan_directories": Array[String](["res://powerups/"]),
@@ -17,10 +17,9 @@ _uids_to_string_ids = Dictionary[StringName, StringName]({
 &"uid://34y6mpt5dlhx": &"balls3",
 &"uid://67n8fmdf8xsq": &"through_ball",
 &"uid://b1edou4m7pa2a": &"paddle_expand",
-&"uid://ba76w86bym8gd": &"speed_down",
-&"uid://bi5dhctofc3pi": &"speed_up",
+&"uid://ba76w86bym8gd": &"speed_up",
+&"uid://bi5dhctofc3pi": &"speed_down",
 &"uid://bjwft22mjk3um": &"shield",
-&"uid://buv20pup74oyn": &"power_up_data",
 &"uid://chga3tw675bku": &"magnet",
 &"uid://crdahbnohrk3": &"score_multiplier",
 &"uid://djd5dt5yqjmh4": &"laser",
@@ -32,10 +31,9 @@ _string_ids_to_uids = Dictionary[StringName, StringName]({
 &"laser": &"uid://djd5dt5yqjmh4",
 &"magnet": &"uid://chga3tw675bku",
 &"paddle_expand": &"uid://b1edou4m7pa2a",
-&"power_up_data": &"uid://buv20pup74oyn",
 &"score_multiplier": &"uid://crdahbnohrk3",
 &"shield": &"uid://bjwft22mjk3um",
-&"speed_down": &"uid://ba76w86bym8gd",
-&"speed_up": &"uid://bi5dhctofc3pi",
+&"speed_down": &"uid://bi5dhctofc3pi",
+&"speed_up": &"uid://ba76w86bym8gd",
 &"through_ball": &"uid://67n8fmdf8xsq"
 })
