@@ -18,14 +18,14 @@ const CLINK_TIME := 0.04
 
 
 static var TYPE_STATS := {
-	BlockType.RED: {"color": Color("c2444a"), "hits": 1, "points": 50, "metallic": false},
-	BlockType.ORANGE: {"color": Color("df7126"), "hits": 1, "points": 50, "metallic": false},
-	BlockType.YELLOW: {"color": Color("fbf236"), "hits": 1, "points": 50, "metallic": false},
-	BlockType.GREEN: {"color": Color("53c194"), "hits": 1, "points": 50, "metallic": false},
-	BlockType.BLUE: {"color": Color("5fcde4"), "hits": 1, "points": 50, "metallic": false},
-	BlockType.PURPLE: {"color": Color("a65ea2"), "hits": 1, "points": 50, "metallic": false},
-	BlockType.STEEL: {"color": Color("696a6a"), "hits": 2, "points": 200, "metallic": true},
-	BlockType.GOLD: {"color": Color("ffd700"), "hits": 0, "points": 0, "metallic": true},
+	BlockType.RED: {"color": Color("#c2444a"), "hits": 1, "points": 50, "metallic": false},
+	BlockType.ORANGE: {"color": Color("#df7126"), "hits": 1, "points": 50, "metallic": false},
+	BlockType.YELLOW: {"color": Color("#fbf236"), "hits": 1, "points": 50, "metallic": false},
+	BlockType.GREEN: {"color": Color("#53c194"), "hits": 1, "points": 50, "metallic": false},
+	BlockType.BLUE: {"color": Color("#5fcde4"), "hits": 1, "points": 50, "metallic": false},
+	BlockType.PURPLE: {"color": Color("#b700ff"), "hits": 1, "points": 50, "metallic": false},
+	BlockType.STEEL: {"color": Color("#696a6a"), "hits": 2, "points": 200, "metallic": true},
+	BlockType.GOLD: {"color": Color("#ffd700"), "hits": 0, "points": 0, "metallic": true},
 }
 
 @export var block_type: BlockType = BlockType.BLUE:
@@ -92,7 +92,6 @@ func _apply_type() -> void:
 func _current_color() -> Color:
 	var color: Color = stats()["color"]
 	return color.darkened(DAMAGED_DARKEN) if hits_taken > 0 else color
-
 
 
 func _clink() -> void:

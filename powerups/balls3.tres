@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="PowerUpData" format=3 uid="uid://34y6mpt5dlhx"]
+
+[ext_resource type="Texture2D" uid="uid://c2u6v2lc8qkhe" path="res://assets/cards/3 balls.png" id="1_q7fse"]
+[ext_resource type="Script" uid="uid://buv20pup74oyn" path="res://powerups/power_up_data.gd" id="2_kbbgr"]
+
+[resource]
+script = ExtResource("2_kbbgr")
+id = &"balls3"
+name = "3 Balls"
+description = "Adds 2 extra balls to the game."
+image = ExtResource("1_q7fse")
+color = Color(0.145, 0.476, 0.476, 1)

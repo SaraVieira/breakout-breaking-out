@@ -1,7 +1,7 @@
 extends Node
 
 signal level_changed(level: int)
-signal powerups_offered(powerups: Array)
+signal powerups_offered(powerups: Array[PowerUpData])
 
 var score: int = 0
 var level: int = 1
@@ -11,9 +11,10 @@ var is_level_won: bool = false
 var is_showing_powerup: bool = false
 var paused: bool = false
 var balls: int = 1
-var current_powerups = ["magnet"]
-var powerups = PowerUp.new()
-var shown_powerups = []
+const POWERUP_POOL: PowerUpPool = preload("res://powerups/pool.tres")
+
+var current_powerups: Array[StringName] = [&"magnet"]
+var shown_powerups: Array[PowerUpData] = []
 
 func _ready() -> void:
 	win_level()
@@ -41,8 +42,11 @@ func reset() -> void:
 	is_showing_powerup = false
 	level_changed.emit(level)
 
+func has_powerup(id: StringName) -> bool:
+	return current_powerups.has(id)
+
 func add_score(points: int) -> void:
-	if current_powerups.has("score_multiplier"):
+	if has_powerup(&"score_multiplier"):
 		points *= 2
 	score += points
 
@@ -55,7 +59,7 @@ func lose_life() -> void:
 func win_level() -> void:
 	is_level_won = true
 	is_showing_powerup = true
-	shown_powerups = powerups.get_random_powerups(3)
+	shown_powerups = POWERUP_POOL.pick(3)
 	powerups_offered.emit(shown_powerups)
 
 func next_level() -> void:

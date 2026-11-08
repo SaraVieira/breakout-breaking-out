@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="PowerUpPool" format=3 uid="uid://chtknude086s8"]
+
+[ext_resource type="Script" uid="uid://buv20pup74oyn" path="res://powerups/power_up_data.gd" id="1_n6tbp"]
+[ext_resource type="Resource" uid="uid://34y6mpt5dlhx" path="res://powerups/balls3.tres" id="2_kbpbw"]
+[ext_resource type="Resource" path="res://powerups/speed_up.tres" id="3_kwoc0"]
+[ext_resource type="Resource" uid="uid://b1edou4m7pa2a" path="res://powerups/paddle_expand.tres" id="4_f7bnd"]
+[ext_resource type="Resource" path="res://powerups/through_ball.tres" id="5_fliuj"]
+[ext_resource type="Resource" path="res://powerups/sticky_paddle.tres" id="6_oc5a0"]
+[ext_resource type="Resource" uid="uid://djd5dt5yqjmh4" path="res://powerups/laser.tres" id="7_l20hr"]
+[ext_resource type="Resource" path="res://powerups/shield.tres" id="8_c2fcf"]
+[ext_resource type="Resource" uid="uid://chga3tw675bku" path="res://powerups/magnet.tres" id="9_hk2r5"]
+[ext_resource type="Resource" uid="uid://dvbw0hkbv2hm1" path="res://powerups/fire_ball.tres" id="10_1fptt"]
+[ext_resource type="Resource" path="res://powerups/score_multiplier.tres" id="11_3b2jb"]
+[ext_resource type="Script" uid="uid://we840m6nvoij" path="res://powerups/power_up_pool.gd" id="12_py6rl"]
+
+[resource]
+script = ExtResource("12_py6rl")
+all = Array[ExtResource("1_n6tbp")]([ExtResource("2_kbpbw"), ExtResource("3_kwoc0"), ExtResource("4_f7bnd"), ExtResource("5_fliuj"), ExtResource("6_oc5a0"), ExtResource("7_l20hr"), ExtResource("8_c2fcf"), ExtResource("9_hk2r5"), ExtResource("10_1fptt"), ExtResource("11_3b2jb")])

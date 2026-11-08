@@ -147,8 +147,8 @@ script = ExtResource("fdbk")
 
 [node name="FeedbackRotationOnceEffect" type="Node" parent="VBox/Matrix/RotationInstant/InteractionFeedback" unique_id=22]
 script = ExtResource("e_rotonce")
-on_press = true
 degrees = 3.0
+on_press = true
 transition = 1
 
 [node name="RotationRepeated" type="Button" parent="VBox/Matrix" unique_id=23]
@@ -224,7 +224,6 @@ script = ExtResource("fdbk")
 [node name="FeedbackModulateOnceEffect" type="Node" parent="VBox/Matrix/ModulateInstant/InteractionFeedback" unique_id=40]
 script = ExtResource("e_modonce")
 on_press = true
-color = null
 transition = 1
 
 [node name="ModulateRepeated" type="Button" parent="VBox/Matrix" unique_id=41]
@@ -276,6 +275,7 @@ script = ExtResource("fdbk")
 [node name="FeedbackHapticEffect" type="Node" parent="VBox/Combo/Haptic/InteractionFeedback" unique_id=52]
 script = ExtResource("e_hapt")
 on_hover = false
+on_press = true
 
 [node name="Cursor" type="Button" parent="VBox/Combo" unique_id=53]
 custom_minimum_size = Vector2(260, 64)
@@ -287,9 +287,8 @@ script = ExtResource("fdbk")
 
 [node name="FeedbackCursorEffect" type="Node" parent="VBox/Combo/Cursor/InteractionFeedback" unique_id=55]
 script = ExtResource("e_curs")
-shape = 2
 
-[node name="FeedbackCursorEffectPressed" type="Node" parent="VBox/Combo/Cursor/InteractionFeedback"]
+[node name="FeedbackCursorEffectPressed" type="Node" parent="VBox/Combo/Cursor/InteractionFeedback" unique_id=40357936]
 script = ExtResource("e_curs")
 shape = 6
 on_hover = false
@@ -372,8 +371,8 @@ transition = 10
 
 [node name="FeedbackRotationOnceEffect" type="Node" parent="VBox/Combo/AllTogether/InteractionFeedback" unique_id=74]
 script = ExtResource("e_rotonce")
-on_press = true
 degrees = 3.0
+on_press = true
 transition = 1
 
 [node name="FeedbackRotationOscillatedEffect" type="Node" parent="VBox/Combo/AllTogether/InteractionFeedback" unique_id=75]

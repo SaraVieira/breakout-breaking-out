@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="PowerUpData" format=3 uid="uid://crdahbnohrk3"]
+
+[ext_resource type="Texture2D" uid="uid://bqbrs200pao3v" path="res://assets/cards/expand.png" id="1_iy7kw"]
+[ext_resource type="Script" uid="uid://buv20pup74oyn" path="res://powerups/power_up_data.gd" id="2_8qmg1"]
+
+[resource]
+script = ExtResource("2_8qmg1")
+id = &"score_multiplier"
+name = "Score Multiplier"
+description = "Doubles the score earned for a short duration."
+image = ExtResource("1_iy7kw")
+color = Color(0.768, 0.428, 0.31, 1)

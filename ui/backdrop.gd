@@ -1,9 +1,7 @@
 class_name Backdrop extends ColorRect
 
-##teal, green, blue, violet, maroon, olive.
 const HUES: Array[float] = [0.0, -40.0, 55.0, 110.0, 175.0, -110.0]
 
-## Seconds to sweep from one level's hue to the next.
 const SHIFT_DURATION := 0.6
 
 const FIELD_SPREAD := 64.0
@@ -32,7 +30,6 @@ func _on_level_changed(level_number: int) -> void:
 	_shift = create_tween().set_trans(Tween.TRANS_SINE)
 	_shift.tween_property(material, "shader_parameter/level_hue", target, SHIFT_DURATION)
 	_reroll_field()
-
 
 
 func _hue_for(level_number: int) -> float:

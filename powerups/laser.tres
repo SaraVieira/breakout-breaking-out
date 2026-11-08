@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="PowerUpData" format=3 uid="uid://djd5dt5yqjmh4"]
+
+[ext_resource type="Texture2D" uid="uid://bqbrs200pao3v" path="res://assets/cards/expand.png" id="1_0heeu"]
+[ext_resource type="Script" uid="uid://buv20pup74oyn" path="res://powerups/power_up_data.gd" id="2_58ei3"]
+
+[resource]
+script = ExtResource("2_58ei3")
+id = &"laser"
+name = "Laser"
+description = "Paddle can shoot lasers."
+image = ExtResource("1_0heeu")
+color = Color(0.768, 0.428, 0.31, 1)

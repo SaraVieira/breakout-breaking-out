@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="PowerUpData" format=3 uid="uid://chga3tw675bku"]
+
+[ext_resource type="Texture2D" uid="uid://3u4mhm8i8skf" path="res://assets/cards/magnet.png" id="1_a0ymv"]
+[ext_resource type="Script" uid="uid://buv20pup74oyn" path="res://powerups/power_up_data.gd" id="2_e8r7d"]
+
+[resource]
+script = ExtResource("2_e8r7d")
+id = &"magnet"
+name = "Magnet"
+description = "Attracts the ball to the paddle."
+image = ExtResource("1_a0ymv")
+color = Color(0.768, 0.428, 0.31, 1)

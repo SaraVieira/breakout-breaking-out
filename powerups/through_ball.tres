@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="PowerUpData" format=3 uid="uid://67n8fmdf8xsq"]
+
+[ext_resource type="Texture2D" uid="uid://mv1a8isoltyy" path="res://assets/cards/through.png" id="1_7d8rp"]
+[ext_resource type="Script" uid="uid://buv20pup74oyn" path="res://powerups/power_up_data.gd" id="2_sr1do"]
+
+[resource]
+script = ExtResource("2_sr1do")
+id = &"through_ball"
+name = "Through Ball"
+description = "Ball can pass through blocks."
+image = ExtResource("1_7d8rp")
+color = Color(0.768, 0.428, 0.31, 1)

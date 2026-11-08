@@ -22,7 +22,7 @@ func hold() -> void:
 
 func launch() -> void:
 	launched = true
-	if GameState.current_powerups.has("speed_up"):
+	if GameState.has_powerup(&"speed_up"):
 		SPEED *= 1.5
 	velocity = Vector2(SPEED * -1, -SPEED)
 
@@ -52,7 +52,7 @@ func _physics_process(delta: float) -> void:
 				collision.get_collider().hit(self)
 
 			if collision.get_collider().is_in_group("paddle"):
-				if GameState.current_powerups.has("magnet"):
+				if GameState.has_powerup(&"magnet"):
 					hold()
 				else:
 					collision.get_collider().nudge_down()

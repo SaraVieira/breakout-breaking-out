@@ -1,10 +1,5 @@
 class_name LevelData
 
-## Loads and validates the pre-baked levels produced by tools/level-workshop.
-##
-## A levels file is a JSON array of levels; each level is an array of
-## equal-length strings, one per brick row, top row first. Nothing here assumes
-## symmetry — hand-made levels are free to be asymmetric.
 
 const LEVELS_PATH := "res://levels/levels.json"
 const EMPTY_CELL := "."
@@ -94,4 +89,4 @@ static func _validate(value: Variant, index: int, path: String) -> PackedStringA
 
 static func _fail(message: String) -> void:
 	push_error(message)
-	assert(false, message) # debug builds stop here; exported builds skip the level
+	assert(false, message)

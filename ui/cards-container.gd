@@ -2,7 +2,6 @@ extends HSplitContainer
 const CARD = preload("uid://cejdvy5wykvgn")
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if GameState.is_showing_powerup:
 		for powerup in GameState.shown_powerups:
