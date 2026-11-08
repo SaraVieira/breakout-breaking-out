@@ -38,7 +38,7 @@ func build(level_number: int) -> void:
 			var cell := line[column]
 			if cell == LevelData.EMPTY_CELL:
 				continue
-			_spawn_brick(LevelData.CHAR_TO_TYPE[cell], origin, column, row)
+			_spawn_brick(LevelData.type_for(cell), origin, column, row)
 
 
 func _origin_for(width: int) -> Vector2:
@@ -51,7 +51,7 @@ func clear() -> void:
 		child.queue_free()
 
 
-func _spawn_brick(type: Block.BlockType, origin: Vector2, column: int, row: int) -> void:
+func _spawn_brick(type: BlockTypeData, origin: Vector2, column: int, row: int) -> void:
 	var brick: Block = BRICK_SCENE.instantiate()
 	brick.block_type = type
 	brick.position = origin + Vector2(column, row) * BRICK_SIZE

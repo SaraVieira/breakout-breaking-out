@@ -3,18 +3,19 @@ class_name LevelData
 
 const LEVELS_PATH := "res://levels/levels.json"
 const EMPTY_CELL := "."
-const GOLD_CELL := "$"
 
-const CHAR_TO_TYPE := {
-	"R": Block.BlockType.RED,
-	"O": Block.BlockType.ORANGE,
-	"Y": Block.BlockType.YELLOW,
-	"G": Block.BlockType.GREEN,
-	"B": Block.BlockType.BLUE,
-	"P": Block.BlockType.PURPLE,
-	"S": Block.BlockType.STEEL,
-	"$": Block.BlockType.GOLD,
-}
+const BLOCK_TYPES: Registry = preload("res://blocks/block_types.tres")
+
+static var _types_by_char: Dictionary[String, BlockTypeData] = {}
+
+
+static func type_for(cell: String) -> BlockTypeData:
+	if _types_by_char.is_empty():
+		for type: BlockTypeData in BLOCK_TYPES.load_all_blocking().values():
+			if _types_by_char.has(type.level_char):
+				_fail("block types: '%s' is used by more than one type" % type.level_char)
+			_types_by_char[type.level_char] = type
+	return _types_by_char.get(cell)
 
 
 static func load_levels(path: String = LEVELS_PATH) -> Array[PackedStringArray]:
@@ -70,12 +71,13 @@ static func _validate(value: Variant, index: int, path: String) -> PackedStringA
 			var cell := line[column]
 			if cell == EMPTY_CELL:
 				continue
-			if not CHAR_TO_TYPE.has(cell):
+			var type := type_for(cell)
+			if type == null:
 				_fail("%s: level %d has unknown character '%s' at row %d, column %d" % [
 					path, index, cell, row, column,
 				])
 				return PackedStringArray()
-			if cell != GOLD_CELL:
+			if type.hits > 0:
 				breakable += 1
 
 		rows.append(line)

@@ -11,9 +11,9 @@ var is_level_won: bool = false
 var is_showing_powerup: bool = false
 var paused: bool = false
 var balls: int = 1
-const POWERUP_POOL: PowerUpPool = preload("res://powerups/pool.tres")
+const POWERUPS: Registry = preload("res://powerups/power_ups.tres")
 
-var current_powerups: Array[StringName] = [&"magnet"]
+var current_powerups: Array[StringName] = []
 var shown_powerups: Array[PowerUpData] = []
 
 func _ready() -> void:
@@ -54,12 +54,19 @@ func lose_life() -> void:
 	if lives <= 0:
 		is_game_over = true
 	else:
+		if has_powerup(&"shield"):
+			current_powerups.erase(&"shield")
+			return
 		lives -= 1
 
 func win_level() -> void:
 	is_level_won = true
 	is_showing_powerup = true
-	shown_powerups = POWERUP_POOL.pick(3)
+	var ids := POWERUPS.get_all_string_ids()
+	ids.shuffle()
+	shown_powerups.clear()
+	for id in ids.slice(0, 3):
+		shown_powerups.append(POWERUPS.load_entry(id))
 	powerups_offered.emit(shown_powerups)
 
 func next_level() -> void:

@@ -3,13 +3,7 @@ class_name Block extends StaticBody2D
 signal broken
 
 
-enum BlockType { RED, ORANGE, YELLOW, GREEN, BLUE, PURPLE, STEEL, GOLD }
-
-
 const BREAKABLE_GROUP := "breakable"
-
-const SOLID_TEXTURE := preload("res://assets/block.png")
-const METALLIC_TEXTURE := preload("res://assets/block-metal.png")
 
 const DAMAGED_DARKEN := 0.1
 
@@ -17,18 +11,7 @@ const CLINK_OFFSET := Vector2(0, 1.5)
 const CLINK_TIME := 0.04
 
 
-static var TYPE_STATS := {
-	BlockType.RED: {"color": Color("#c2444a"), "hits": 1, "points": 50, "metallic": false},
-	BlockType.ORANGE: {"color": Color("#df7126"), "hits": 1, "points": 50, "metallic": false},
-	BlockType.YELLOW: {"color": Color("#fbf236"), "hits": 1, "points": 50, "metallic": false},
-	BlockType.GREEN: {"color": Color("#53c194"), "hits": 1, "points": 50, "metallic": false},
-	BlockType.BLUE: {"color": Color("#5fcde4"), "hits": 1, "points": 50, "metallic": false},
-	BlockType.PURPLE: {"color": Color("#b700ff"), "hits": 1, "points": 50, "metallic": false},
-	BlockType.STEEL: {"color": Color("#696a6a"), "hits": 2, "points": 200, "metallic": true},
-	BlockType.GOLD: {"color": Color("#ffd700"), "hits": 0, "points": 0, "metallic": true},
-}
-
-@export var block_type: BlockType = BlockType.BLUE:
+@export var block_type: BlockTypeData = preload("res://blocks/types/blue.tres"):
 	set = set_block_type
 
 var hits_taken: int = 0
@@ -44,18 +27,14 @@ func _ready() -> void:
 	_apply_type()
 
 
-func set_block_type(value: BlockType) -> void:
+func set_block_type(value: BlockTypeData) -> void:
 	block_type = value
 	hits_taken = 0
 	_apply_type()
 
 
-func stats() -> Dictionary:
-	return TYPE_STATS[block_type]
-
-
 func is_breakable() -> bool:
-	return stats()["hits"] > 0
+	return block_type.hits > 0
 
 
 func hit(body: Node2D) -> void:
@@ -67,8 +46,8 @@ func hit(body: Node2D) -> void:
 		return
 
 	hits_taken += 1
-	if hits_taken >= stats()["hits"]:
-		GameState.add_score(stats()["points"])
+	if hits_taken >= block_type.hits:
+		GameState.add_score(block_type.points)
 		queue_free()
 		broken.emit()
 	else:
@@ -77,10 +56,10 @@ func hit(body: Node2D) -> void:
 
 
 func _apply_type() -> void:
-	if sprite == null:
+	if sprite == null or block_type == null:
 		return
 
-	sprite.texture = METALLIC_TEXTURE if stats()["metallic"] else SOLID_TEXTURE
+	sprite.texture = block_type.texture
 	sprite.self_modulate = _current_color()
 
 	if is_breakable():
@@ -90,7 +69,7 @@ func _apply_type() -> void:
 
 
 func _current_color() -> Color:
-	var color: Color = stats()["color"]
+	var color := block_type.color
 	return color.darkened(DAMAGED_DARKEN) if hits_taken > 0 else color
 
 

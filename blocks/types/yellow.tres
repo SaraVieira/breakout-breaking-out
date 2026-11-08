@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="BlockTypeData" format=3 uid="uid://04pcoxeyldiu"]
+
+[ext_resource type="Script" uid="uid://bqoupwyqs31io" path="res://blocks/block_type_data.gd" id="1_frdoh"]
+[ext_resource type="Texture2D" uid="uid://dlutic5geex0p" path="res://assets/block.png" id="2_ksapa"]
+
+[resource]
+script = ExtResource("1_frdoh")
+level_char = "Y"
+color = Color(0.9843137, 0.9490196, 0.21176471, 1)
+texture = ExtResource("2_ksapa")

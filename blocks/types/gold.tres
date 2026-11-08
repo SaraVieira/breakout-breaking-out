@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="BlockTypeData" format=3 uid="uid://f1huuufpbinr"]
+
+[ext_resource type="Script" uid="uid://bqoupwyqs31io" path="res://blocks/block_type_data.gd" id="1_s2giv"]
+[ext_resource type="Texture2D" uid="uid://467c6yv0ejob" path="res://assets/block-metal.png" id="2_vhf64"]
+
+[resource]
+script = ExtResource("1_s2giv")
+level_char = "$"
+color = Color(1, 0.84313726, 0, 1)
+hits = 0
+points = 0
+texture = ExtResource("2_vhf64")
