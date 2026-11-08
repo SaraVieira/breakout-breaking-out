@@ -60,8 +60,9 @@ func count_powerup(id: StringName) -> int:
 	return count
 
 func add_score(points: int) -> void:
-	if has_powerup(&"score_multiplier"):
-		points *= 1.5
+	var multiplier_cards = count_powerup(&"score_multiplier")
+	if multiplier_cards > 0:
+		points *= 1.1 ** multiplier_cards
 	score += points
 
 func lose_life() -> void:
