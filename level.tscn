@@ -79,6 +79,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+color = Color(0.18359044, 0.18359044, 0.18359044, 1)
 
 [node name="Paddle" parent="." unique_id=1137321319 instance=ExtResource("1_u52ul")]
 position = Vector2(0, 47)
@@ -119,10 +120,10 @@ position = Vector2(0, 33)
 script = ExtResource("4_f2txt")
 
 [node name="CardsContainer" parent="." unique_id=1547598435 instance=ExtResource("7_km5ld")]
-offset_left = -144.0
-offset_top = -53.0
-offset_right = 160.0
-offset_bottom = 77.0
+offset_left = -195.12
+offset_top = -79.365
+offset_right = 108.880005
+offset_bottom = 50.635002
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=449924610]
 position = Vector2(-1, 0)

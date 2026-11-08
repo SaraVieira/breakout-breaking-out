@@ -3,10 +3,10 @@
 [ext_resource type="Script" uid="uid://cs85w37dwupar" path="res://ui/cards-container.gd" id="1_cs4xa"]
 
 [node name="CardsContainer" type="HSplitContainer" unique_id=1547598435]
-offset_left = -9.0
-offset_top = -56.0
-offset_right = 295.0
-offset_bottom = 74.0
-split_offsets = PackedInt32Array(92, 194)
-split_offset = 92
+offset_right = 304.0
+offset_bottom = 130.0
+split_offsets = PackedInt32Array(120, 252)
+dragging_enabled = false
+dragger_visibility = 1
+split_offset = 120
 script = ExtResource("1_cs4xa")

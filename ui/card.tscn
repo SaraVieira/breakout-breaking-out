@@ -3,118 +3,38 @@
 [ext_resource type="LabelSettings" uid="uid://8lca5bdt8rky" path="res://ui/label-card-settings.tres" id="1_5giai"]
 [ext_resource type="Material" uid="uid://ber1ppyqwb3d8" path="res://ui/portal-material.tres" id="1_gx6tf"]
 [ext_resource type="Script" uid="uid://c2hi0t0ijsaqj" path="res://ui/card.gd" id="1_oiqpm"]
-[ext_resource type="Texture2D" uid="uid://c2u6v2lc8qkhe" path="res://assets/cards/3 balls.png" id="2_rd5dq"]
-[ext_resource type="Script" uid="uid://dgnfej0vnae1p" path="res://addons/interaction_feedback/interaction_feedback.gd" id="5_rd5dq"]
-[ext_resource type="Script" uid="uid://bg75wl2v4x2yr" path="res://addons/interaction_feedback/effects/feedback_scale_effect.gd" id="6_rd5dq"]
+[ext_resource type="Texture2D" uid="uid://u4cp260kvewc" path="res://assets/cards/card-test.png" id="2_1dhi4"]
 
 [sub_resource type="Gradient" id="Gradient_1dhi4"]
-offsets = PackedFloat32Array(0.77710843, 1)
-colors = PackedColorArray(0.5932194, 0.27993873, 0.48563528, 1, 0.94700485, 0.8313321, 0.89888805, 1)
+interpolation_mode = 1
+offsets = PackedFloat32Array(0.8979592, 0.9265306, 1)
+colors = PackedColorArray(0.41568628, 0.74509805, 0.1882353, 1, 0.27344927, 0.49439216, 0.12587115, 1, 0.94509804, 0.83137256, 0.8980392, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_3dww4"]
 gradient = SubResource("Gradient_1dhi4")
-fill = 1
-fill_from = Vector2(0.47826087, 0.5043478)
-fill_to = Vector2(0, 0)
+width = 118
+height = 147
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+metadata/_snap_enabled = true
+metadata/_snap_count = 20
 
 [node name="Card" type="Control" unique_id=220731233]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 78.315
-offset_bottom = 111.0
+offset_right = 96.0
+offset_bottom = 128.0
 script = ExtResource("1_oiqpm")
 
-[node name="cemter" type="ColorRect" parent="." unique_id=1205213621]
-layout_mode = 0
-offset_left = 6.0
-offset_top = 6.0
-offset_right = 77.0
-offset_bottom = 106.0
-color = Color(0.13317516, 0.23370063, 0.5189718, 1)
-
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=614389339]
-position = Vector2(40.5, 56)
-texture = ExtResource("2_rd5dq")
+position = Vector2(48, 64)
+texture = ExtResource("2_1dhi4")
 
 [node name="portal" type="Sprite2D" parent="." unique_id=1318931372]
 material = ExtResource("1_gx6tf")
-position = Vector2(39.5, 57.000004)
-scale = Vector2(1.109375, 1.6562501)
+position = Vector2(47.750004, 63.999992)
 texture = SubResource("GradientTexture2D_3dww4")
-
-[node name="Border" type="Control" parent="." unique_id=1594571047]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="InteractionFeedback" type="Node" parent="Border" unique_id=2119515622]
-script = ExtResource("5_rd5dq")
-touch_mode = 1
-metadata/_custom_type_script = "uid://dgnfej0vnae1p"
-
-[node name="FeedbackModulateEffect" type="Node" parent="Border/InteractionFeedback" unique_id=1405235534]
-script = ExtResource("6_rd5dq")
-hovered_scale = 2.26
-pressed_scale = 0.8
-transition = 10
-metadata/_custom_type_script = "uid://bg75wl2v4x2yr"
-
-[node name="top left" type="Label" parent="Border" unique_id=40298968]
-layout_mode = 0
-offset_right = 41.0
-offset_bottom = 57.0
-rotation = -1.599772e-05
-text = "╔══
-║
-║
-║"
-label_settings = ExtResource("1_5giai")
-
-[node name="bottom right" type="Label" parent="Border" unique_id=929290591]
-layout_mode = 0
-offset_left = 80.0
-offset_top = 114.0
-offset_right = 121.0
-offset_bottom = 171.0
-rotation = 3.1415927
-text = "╔══
-║
-║
-║"
-label_settings = ExtResource("1_5giai")
-
-[node name="bottom left" type="Label" parent="Border" unique_id=2056122389]
-layout_mode = 0
-offset_top = 114.0
-offset_right = 41.0
-offset_bottom = 171.0
-rotation = 3.1415927
-scale = Vector2(-1, 1)
-text = "╔══
-║
-║
-║"
-label_settings = ExtResource("1_5giai")
-
-[node name="top right" type="Label" parent="Border" unique_id=1799056688]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 60.0
-offset_top = -20.0
-offset_right = 101.0
-offset_bottom = 37.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(-1, 1)
-text = "╔══
-║
-║
-║"
-label_settings = ExtResource("1_5giai")
 
 [node name="Button" type="Button" parent="." unique_id=184778524]
 layout_mode = 1
@@ -130,5 +50,16 @@ offset_bottom = 54.5
 grow_horizontal = 2
 grow_vertical = 2
 flat = true
+
+[node name="Label" type="Label" parent="." unique_id=67735976]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 93.0
+offset_right = 94.0
+offset_bottom = 136.0
+text = "magnet"
+label_settings = ExtResource("1_5giai")
+horizontal_alignment = 1
+autowrap_mode = 2
 
 [connection signal="pressed" from="Button" to="." method="_on_card_click"]
