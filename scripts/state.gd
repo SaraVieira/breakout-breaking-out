@@ -13,6 +13,12 @@ var paused: bool = false
 var balls: int = 1
 const POWERUPS: Registry = preload("res://powerups/power_ups.tres")
 
+const BALL_BASE_SPEED := 200.0
+const BALL_MIN_SPEED := 120.0
+const BALL_MAX_SPEED := 270.0
+
+var ball_speed := BALL_BASE_SPEED
+
 var current_powerups: Array[StringName] = []
 var shown_powerups: Array[PowerUpData] = []
 
@@ -40,14 +46,22 @@ func reset() -> void:
 	is_game_over = false
 	is_level_won = false
 	is_showing_powerup = false
+	ball_speed = BALL_BASE_SPEED
 	level_changed.emit(level)
 
 func has_powerup(id: StringName) -> bool:
 	return current_powerups.has(id)
 
+func count_powerup(id: StringName) -> int:
+	var count := 0
+	for powerup_id in current_powerups:
+		if powerup_id == id:
+			count += 1
+	return count
+
 func add_score(points: int) -> void:
 	if has_powerup(&"score_multiplier"):
-		points *= 2
+		points *= 1.5
 	score += points
 
 func lose_life() -> void:
@@ -62,11 +76,24 @@ func lose_life() -> void:
 func win_level() -> void:
 	is_level_won = true
 	is_showing_powerup = true
-	var ids := POWERUPS.get_all_string_ids()
-	ids.shuffle()
-	shown_powerups.clear()
-	for id in ids.slice(0, 3):
-		shown_powerups.append(POWERUPS.load_entry(id))
+	offer_powerups()
+
+func can_offer(id: StringName) -> bool:
+	match id:
+		&"speed_up":
+			return ball_speed < BALL_MAX_SPEED
+		&"speed_down":
+			return ball_speed > BALL_MIN_SPEED
+	return true
+
+func offer_powerups(cache_mode := ResourceLoader.CACHE_MODE_REUSE) -> void:
+	var offerable: Array[PowerUpData] = []
+	for id in POWERUPS.get_all_string_ids():
+		var powerup := POWERUPS.load_entry(id, "", cache_mode) as PowerUpData
+		if powerup and can_offer(powerup.id):
+			offerable.append(powerup)
+	offerable.shuffle()
+	shown_powerups = offerable.slice(0, 3)
 	powerups_offered.emit(shown_powerups)
 
 func next_level() -> void:

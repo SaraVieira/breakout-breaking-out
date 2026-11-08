@@ -7,6 +7,7 @@
 script = ExtResource("2_u6fn0")
 id = &"shield"
 name = "Shield"
+implemented = true
 description = "Protects the paddle from losing a life."
 image = ExtResource("1_1gfa0")
 color = Color(0.768, 0.428, 0.31, 1)

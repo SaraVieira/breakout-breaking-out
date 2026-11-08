@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://biqrnjta5mu6s"]
+
+[ext_resource type="Script" uid="uid://b3o8rcpoyrw57" path="res://ui/debug_menu.gd" id="1_dbg"]
+[ext_resource type="FontFile" uid="uid://dryy6b0f6nn60" path="res://assets/fonts/dungeon-mode.ttf" id="1_bbiiw"]
+
+[node name="DebugMenu" type="CanvasLayer" unique_id=2006190465]
+layer = 100
+script = ExtResource("1_dbg")
+
+[node name="Panel" type="PanelContainer" parent="." unique_id=721312357]
+offset_left = 4.0
+offset_top = 20.0
+offset_right = 4.0
+offset_bottom = 20.0
+
+[node name="Buttons" type="VBoxContainer" parent="Panel" unique_id=1916211467]
+layout_mode = 2
+
+[node name="WinLevel" type="Button" parent="Panel/Buttons" unique_id=1533336474]
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("1_bbiiw")
+theme_override_font_sizes/font_size = 16
+text = "Win level"
+
+[node name="ReloadPowerups" type="Button" parent="Panel/Buttons" unique_id=2865578]
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("1_bbiiw")
+theme_override_font_sizes/font_size = 16
+text = "Reload powerups"
+
+[connection signal="pressed" from="Panel/Buttons/WinLevel" to="." method="_on_win_level_pressed"]
+[connection signal="pressed" from="Panel/Buttons/ReloadPowerups" to="." method="_on_reload_powerups_pressed"]

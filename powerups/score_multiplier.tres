@@ -10,3 +10,4 @@ name = "Score Multiplier"
 description = "Doubles the score earned for a short duration."
 image = ExtResource("1_iy7kw")
 color = Color(0.768, 0.428, 0.31, 1)
+incremental = true

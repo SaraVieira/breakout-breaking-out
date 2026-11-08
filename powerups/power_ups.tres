@@ -17,6 +17,7 @@ _uids_to_string_ids = Dictionary[StringName, StringName]({
 &"uid://34y6mpt5dlhx": &"balls3",
 &"uid://67n8fmdf8xsq": &"through_ball",
 &"uid://b1edou4m7pa2a": &"paddle_expand",
+&"uid://ba76w86bym8gd": &"speed_down",
 &"uid://bi5dhctofc3pi": &"speed_up",
 &"uid://bjwft22mjk3um": &"shield",
 &"uid://buv20pup74oyn": &"power_up_data",
@@ -35,6 +36,7 @@ _string_ids_to_uids = Dictionary[StringName, StringName]({
 &"power_up_data": &"uid://buv20pup74oyn",
 &"score_multiplier": &"uid://crdahbnohrk3",
 &"shield": &"uid://bjwft22mjk3um",
+&"speed_down": &"uid://ba76w86bym8gd",
 &"speed_up": &"uid://bi5dhctofc3pi",
 &"sticky_paddle": &"uid://cgbd383cw5wrq",
 &"through_ball": &"uid://67n8fmdf8xsq"

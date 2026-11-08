@@ -8,6 +8,7 @@
 [ext_resource type="Shader" uid="uid://dql06obfquxuf" path="res://ui/bg.gdshader" id="6_bg"]
 [ext_resource type="Script" uid="uid://c0827crx4mcqe" path="res://ui/backdrop.gd" id="7_bg"]
 [ext_resource type="PackedScene" uid="uid://ctapewbdbmq0d" path="res://ui/CardsContainer.tscn" id="7_km5ld"]
+[ext_resource type="PackedScene" uid="uid://biqrnjta5mu6s" path="res://ui/debug_menu.tscn" id="9_dbg"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_bg"]
 frequency = 0.006
@@ -125,3 +126,5 @@ offset_bottom = 77.0
 [node name="Camera2D" type="Camera2D" parent="." unique_id=449924610]
 position = Vector2(-1, 0)
 limit_enabled = false
+
+[node name="DebugMenu" parent="." instance=ExtResource("9_dbg")]

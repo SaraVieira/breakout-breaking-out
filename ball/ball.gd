@@ -1,7 +1,6 @@
 extends CharacterBody2D
 
 
-var SPEED = 200
 const REST_OFFSET := Vector2(0, 85)
 
 var dir = Vector2.DOWN
@@ -22,11 +21,13 @@ func hold() -> void:
 
 func launch() -> void:
 	launched = true
-	if GameState.has_powerup(&"speed_up"):
-		SPEED *= 1.5
-	velocity = Vector2(SPEED * -1, -SPEED)
+	velocity = Vector2(- GameState.ball_speed, - GameState.ball_speed)
 
 func _on_level_changed(_level: int) -> void:
+	var ups := GameState.count_powerup(&"speed_up")
+	var downs := GameState.count_powerup(&"speed_down")
+	var speed := GameState.BALL_BASE_SPEED * (1.1 ** ups) * (0.9 ** downs)
+	GameState.ball_speed = clampf(speed, GameState.BALL_MIN_SPEED, GameState.BALL_MAX_SPEED)
 	hold()
 
 func _follow_paddle() -> void:

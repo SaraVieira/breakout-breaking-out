@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="PowerUpData" format=3 uid="uid://ba76w86bym8gd"]
+
+[ext_resource type="Texture2D" uid="uid://c75o8noe4eb4y" path="res://assets/cards/speed.png" id="1_e5s20"]
+[ext_resource type="Script" uid="uid://buv20pup74oyn" path="res://powerups/power_up_data.gd" id="2_8b8fh"]
+
+[resource]
+script = ExtResource("2_8b8fh")
+id = &"speed_up"
+name = "Speed Up"
+implemented = true
+description = "Increases the speed of the ball."
+image = ExtResource("1_e5s20")
+color = Color(0.804, 0.833, 0.221, 1)
+incremental = true
