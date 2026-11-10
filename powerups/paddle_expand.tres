@@ -7,6 +7,7 @@
 script = ExtResource("2_lbyf7")
 id = &"paddle_expand"
 name = "Paddle Expand"
+implemented = true
 description = "Expands the paddle size."
 image = ExtResource("1_a51i5")
 color = Color(0.768, 0.428, 0.31, 1)

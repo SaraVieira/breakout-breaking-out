@@ -19,6 +19,8 @@ const BALL_BASE_SPEED := 250.0
 const BALL_MIN_SPEED := 160.0
 const BALL_MAX_SPEED := 350.0
 
+const MAX_PADDLE_EXPANDS := 3
+
 var ball_speed := BALL_BASE_SPEED
 
 var current_powerups: Array[StringName] = []
@@ -88,6 +90,8 @@ func can_offer(id: StringName) -> bool:
 			return ball_speed < BALL_MAX_SPEED
 		&"speed_down":
 			return ball_speed > BALL_MIN_SPEED
+		&"paddle_expand":
+			return count_powerup(&"paddle_expand") < MAX_PADDLE_EXPANDS
 	return true
 
 func offer_powerups(cache_mode := ResourceLoader.CACHE_MODE_REUSE) -> void:

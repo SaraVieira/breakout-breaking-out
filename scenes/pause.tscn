@@ -9,6 +9,7 @@ font = ExtResource("1_f1d2v")
 font_size = 40
 
 [node name="Pause" type="Control" unique_id=1264374190]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

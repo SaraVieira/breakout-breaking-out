@@ -1,5 +1,6 @@
 extends Control
 @onready var pause: Control = $"."
+@onready var label: Label = $Label
 
 
 # Called when the node enters the scene tree for the first time.
@@ -9,7 +10,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if GameState.paused:
+	if GameState.paused and not GameState.is_showing_powerup:
 		pause.visible = true
 	else:
 		pause.visible = false
