@@ -10,3 +10,4 @@ name = "Laser"
 description = "Paddle can shoot lasers."
 image = ExtResource("1_0heeu")
 color = Color(0.768, 0.428, 0.31, 1)
+difficulty = 0

@@ -9,3 +9,6 @@ class_name PowerUpData extends Resource
 @export var color: Color = Color.WHITE
 @export var permanent: bool = false
 @export var incremental: bool = false
+
+enum DIFFICULTY {EASIER, NEUTRAL, HARDER}
+@export var difficulty: DIFFICULTY = DIFFICULTY.NEUTRAL

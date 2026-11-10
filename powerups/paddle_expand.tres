@@ -11,3 +11,5 @@ implemented = true
 description = "Expands the paddle size."
 image = ExtResource("1_a51i5")
 color = Color(0.768, 0.428, 0.31, 1)
+incremental = true
+difficulty = 0

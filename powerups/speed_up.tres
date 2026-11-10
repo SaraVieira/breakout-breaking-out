@@ -12,3 +12,4 @@ description = "Increases the speed of the ball."
 image = ExtResource("1_e5s20")
 color = Color(0.804, 0.833, 0.221, 1)
 incremental = true
+difficulty = 2

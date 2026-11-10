@@ -10,3 +10,4 @@ name = "Fire Ball"
 description = "Ball can destroy blocks on contact."
 image = ExtResource("1_0pal7")
 color = Color(0.768, 0.428, 0.31, 1)
+difficulty = 0

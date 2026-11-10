@@ -11,3 +11,4 @@ implemented = true
 description = "Attracts the ball to the paddle."
 image = ExtResource("1_a0ymv")
 color = Color(0.768, 0.428, 0.31, 1)
+difficulty = 0

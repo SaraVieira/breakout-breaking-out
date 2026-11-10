@@ -3,15 +3,52 @@
 [ext_resource type="LabelSettings" uid="uid://8lca5bdt8rky" path="res://ui/label-card-settings.tres" id="1_5giai"]
 [ext_resource type="Material" uid="uid://ber1ppyqwb3d8" path="res://ui/portal-material.tres" id="1_gx6tf"]
 [ext_resource type="Script" uid="uid://c2hi0t0ijsaqj" path="res://ui/card.gd" id="1_oiqpm"]
-[ext_resource type="Texture2D" uid="uid://u4cp260kvewc" path="res://assets/cards/card-test.png" id="2_1dhi4"]
+[ext_resource type="Texture2D" uid="uid://b6fdjhkepc4nm" path="res://assets/cards/card-bg-easier.png" id="2_rd5dq"]
+[ext_resource type="Texture2D" uid="uid://dm3plt4j51uiv" path="res://assets/cards/card-bg-harder.png" id="3_wlbru"]
+[ext_resource type="Texture2D" uid="uid://dmo0q2rm6huuk" path="res://assets/cards/card-bg-neutral.png" id="4_kjdrr"]
 
 [sub_resource type="Gradient" id="Gradient_1dhi4"]
+resource_local_to_scene = true
 interpolation_mode = 1
 offsets = PackedFloat32Array(0.8979592, 0.9265306, 1)
-colors = PackedColorArray(0.41568628, 0.74509805, 0.1882353, 1, 0.27344927, 0.49439216, 0.12587115, 1, 0.94509804, 0.83137256, 0.8980392, 0)
+colors = PackedColorArray(0.6, 0.8980392, 0.3137255, 1, 0.41568628, 0.74509805, 0.1882353, 1, 0.94509804, 0.83137256, 0.8980392, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_3dww4"]
+resource_local_to_scene = true
 gradient = SubResource("Gradient_1dhi4")
+width = 118
+height = 147
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+metadata/_snap_enabled = true
+metadata/_snap_count = 20
+
+[sub_resource type="Gradient" id="Gradient_ltaug"]
+resource_local_to_scene = true
+interpolation_mode = 1
+offsets = PackedFloat32Array(0.8979592, 0.93061227, 1)
+colors = PackedColorArray(0.9843137, 0.9490196, 0.21176471, 1, 0.7921569, 0.7607843, 0.12941177, 1, 0.94509804, 0.83137256, 0.8980392, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_oiqpm"]
+resource_local_to_scene = true
+gradient = SubResource("Gradient_ltaug")
+width = 118
+height = 147
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+metadata/_snap_enabled = true
+metadata/_snap_count = 20
+
+[sub_resource type="Gradient" id="Gradient_oiqpm"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0.8979592, 0.9265306, 1)
+colors = PackedColorArray(0.8509804, 0.34117648, 0.3882353, 1, 0.6745098, 0.19607843, 0.19607843, 1, 0.94509804, 0.83137256, 0.8980392, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ltaug"]
+resource_local_to_scene = true
+gradient = SubResource("Gradient_oiqpm")
 width = 118
 height = 147
 fill = 2
@@ -27,14 +64,38 @@ offset_right = 96.0
 offset_bottom = 128.0
 script = ExtResource("1_oiqpm")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=614389339]
+[node name="bg-easier" type="Sprite2D" parent="." unique_id=614389339]
+visible = false
 position = Vector2(48, 64)
-texture = ExtResource("2_1dhi4")
+texture = ExtResource("2_rd5dq")
 
-[node name="portal" type="Sprite2D" parent="." unique_id=1318931372]
+[node name="bg-harder" type="Sprite2D" parent="." unique_id=2070738911]
+visible = false
+position = Vector2(48, 64)
+texture = ExtResource("3_wlbru")
+
+[node name="bg-neutral" type="Sprite2D" parent="." unique_id=1941753619]
+visible = false
+position = Vector2(48, 64)
+texture = ExtResource("4_kjdrr")
+
+[node name="portal-easier" type="Sprite2D" parent="." unique_id=1318931372]
+visible = false
 material = ExtResource("1_gx6tf")
 position = Vector2(47.750004, 63.999992)
 texture = SubResource("GradientTexture2D_3dww4")
+
+[node name="portal-neutral" type="Sprite2D" parent="." unique_id=1619022617]
+visible = false
+material = ExtResource("1_gx6tf")
+position = Vector2(47.750004, 63.999992)
+texture = SubResource("GradientTexture2D_oiqpm")
+
+[node name="portal-harder" type="Sprite2D" parent="." unique_id=1172604114]
+visible = false
+material = ExtResource("1_gx6tf")
+position = Vector2(47.750004, 63.999992)
+texture = SubResource("GradientTexture2D_ltaug")
 
 [node name="Button" type="Button" parent="." unique_id=184778524]
 layout_mode = 1

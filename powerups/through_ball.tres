@@ -10,3 +10,4 @@ name = "Through Ball"
 description = "Ball can pass through blocks."
 image = ExtResource("1_7d8rp")
 color = Color(0.768, 0.428, 0.31, 1)
+difficulty = 0

@@ -11,3 +11,4 @@ implemented = true
 description = "Protects the paddle from losing a life."
 image = ExtResource("1_1gfa0")
 color = Color(0.768, 0.428, 0.31, 1)
+difficulty = 0
