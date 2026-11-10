@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://c0827crx4mcqe" path="res://ui/backdrop.gd" id="7_bg"]
 [ext_resource type="PackedScene" uid="uid://ctapewbdbmq0d" path="res://ui/CardsContainer.tscn" id="7_km5ld"]
 [ext_resource type="PackedScene" uid="uid://biqrnjta5mu6s" path="res://ui/debug_menu.tscn" id="9_dbg"]
+[ext_resource type="PackedScene" uid="uid://dxheou3qtcabp" path="res://scenes/pause.tscn" id="10_2orkt"]
 [ext_resource type="Script" uid="uid://ryoye20ow6os" path="res://scripts/ball_spawner.gd" id="10_spawn"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_bg"]
@@ -70,6 +71,7 @@ script = ExtResource("7_bg")
 
 [node name="CRT" type="CanvasLayer" parent="." unique_id=58004967]
 layer = 100
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="CRT" unique_id=58004966]
 material = SubResource("ShaderMaterial_3dww4")
@@ -130,6 +132,13 @@ position = Vector2(-1, 0)
 limit_enabled = false
 
 [node name="DebugMenu" parent="." unique_id=146799729 instance=ExtResource("9_dbg")]
+
+[node name="Pause" parent="." unique_id=1264374190 instance=ExtResource("10_2orkt")]
+visible = false
+offset_left = -284.0
+offset_top = -162.0
+offset_right = -284.0
+offset_bottom = -162.0
 
 [node name="BallSpawner" type="Node2D" parent="." unique_id=1261322419 node_paths=PackedStringArray("main_ball")]
 script = ExtResource("10_spawn")

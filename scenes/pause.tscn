@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://dxheou3qtcabp"]
+
+[ext_resource type="FontVariation" uid="uid://cm1tl0lh1a86i" path="res://ui/gliph-no-space.tres" id="1_f1d2v"]
+[ext_resource type="Script" uid="uid://c3svev20i1w3t" path="res://scripts/pause.gd" id="1_r8yp4"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_r8yp4"]
+paragraph_spacing = -4.0
+font = ExtResource("1_f1d2v")
+font_size = 40
+
+[node name="Pause" type="Control" unique_id=1264374190]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_r8yp4")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=528240499]
+layout_mode = 0
+offset_right = 571.0
+offset_bottom = 325.0
+color = Color(0, 0, 0, 0.23529412)
+
+[node name="Label" type="Label" parent="." unique_id=1554754898]
+layout_mode = 0
+offset_left = 174.0
+offset_top = 132.0
+offset_right = 382.0
+offset_bottom = 168.0
+text = "Paused"
+label_settings = SubResource("LabelSettings_r8yp4")
