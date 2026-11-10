@@ -92,6 +92,9 @@ func can_offer(id: StringName) -> bool:
 			return ball_speed > BALL_MIN_SPEED
 		&"paddle_expand":
 			return count_powerup(&"paddle_expand") < MAX_PADDLE_EXPANDS
+		&"paddle_contract":
+			# One contract is always allowed, plus one more for every expand owned.
+			return count_powerup(&"paddle_contract") < count_powerup(&"paddle_expand") + 1
 	return true
 
 func offer_powerups(cache_mode := ResourceLoader.CACHE_MODE_REUSE) -> void:

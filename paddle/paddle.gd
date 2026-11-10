@@ -16,12 +16,6 @@ const RESIZE_TIME := 0.2
 @onready var right: Sprite2D = $"paddle/p-right"
 @onready var collision: CollisionShape2D = $CollisionShape2D
 
-@export var expanded := false:
-	set(value):
-		expanded = value
-		if is_node_ready():
-			_resize_to_target()
-
 var bounce_tween: Tween
 var resize_tween: Tween
 var middle_width: float
@@ -35,12 +29,7 @@ func _ready() -> void:
 	_apply_width(_target_width())
 
 func _target_width() -> float:
-	var number: int;
-	if expanded:
-		number = 3
-	else: 	
-		number = GameState.count_powerup(&"paddle_expand")
-	var tiles := BASE_TILES + number * TILES_PER_EXPAND
+	var tiles := BASE_TILES + (GameState.count_powerup(&"paddle_expand") -  GameState.count_powerup(&"paddle_contract")) * TILES_PER_EXPAND
 	return tiles * TILE_WIDTH
 
 func _on_level_changed(_level: int) -> void:
